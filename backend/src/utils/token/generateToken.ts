@@ -5,7 +5,7 @@ import { CustomError } from '../CustomError';
 
 const { JWT_SECRET } = process.env;
 
-export async function generate(data: IUser): Promise<void> {
+export async function generateToken(data: IUser): Promise<void> {
   const token = jwt.sign(
     { data },
     JWT_SECRET as string,

@@ -4,7 +4,7 @@ import { CustomError } from '../CustomError';
 
 const { JWT_SECRET } = process.env;
 
-export async function verify(token: string): Promise<void> {
+export async function verifyToken(token: string): Promise<void> {
   const decoded = jwt.verify(token, JWT_SECRET as string, function (err, data) {
     if (err) throw new CustomError(500, 'Internal server Error - token.verify');
     return data;
