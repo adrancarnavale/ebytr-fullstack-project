@@ -14,15 +14,20 @@ model User {
   id        String @id @unique @default(uuid())
   firstName String
   lastName  String
-  email     String
+  email     String @unique
   password  String
   tasks     Task[]
+
+  @@map("users")
 }
 
 model Task {
-  id          String @id @unique @default(uuid())
-  author      User   @relation(fields: [author_id], references: [id])
+  id          String  @id @unique @default(uuid())
+  author      User    @relation(fields: [author_id], references: [id])
   author_id   String
-  description String
+  title       String
+  description String?
   status      String
+
+  @@map("tasks")
 }

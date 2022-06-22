@@ -3,8 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "prisma": {
+    "seed": "tsnd src/database/prisma/seed.ts",
+    "schema": "src/database/prisma/schema.prisma"
+  },
   "scripts": {
-    "dev": "tsnd src/server.ts"
+    "db:up": "yarn prisma migrate dev && yarn dev",
+    "db:restore": "yarn prisma migrate reset && yarn dev",
+    "dev": "tsnd --respawn --ignore-watch node_modules --transpile-only src/server.ts"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +23,7 @@
     "http-status-codes": "^2.2.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/express": "^4.17.13",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",

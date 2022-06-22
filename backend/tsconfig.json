@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "lib": ["esnext"],
     "target": "es2020",
     "module": "commonjs",
     "sourceMap": true,
@@ -24,7 +25,7 @@
     "src/database/seeders",
     "src/database/migrations",
     "dist/database/models",
-    "prisma/seed.ts"
+    "src/database/prisma/seed.ts"
   ],
   "exclude": ["node_modules", "dist", "test"]
 }
