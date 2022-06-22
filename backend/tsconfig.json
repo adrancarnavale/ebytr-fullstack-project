@@ -22,10 +22,10 @@
   },
   "include": [
     "src/**/*",
-    "src/database/seeders",
-    "src/database/migrations",
+    "src/db/seeders",
+    "src/db/migrations",
     "dist/database/models",
-    "src/database/prisma/seed.ts"
+    "src/db/prisma/seed.ts"
   ],
   "exclude": ["node_modules", "dist", "test"]
 }
