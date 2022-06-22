@@ -5,17 +5,8 @@ import { CustomError } from '../CustomError';
 
 const { JWT_SECRET } = process.env;
 
-export async function generateToken(data: IUser): Promise<void> {
-  const token = jwt.sign(
-    { data },
-    JWT_SECRET as string,
-    { expiresIn: '365d' },
-    function (err, t) {
-      if (err)
-        throw new CustomError(500, 'Internal server Error - token.generate');
-      return t;
-    }
-  );
+export function generateToken(data: IUser): string {
+  const token = jwt.sign({ data }, JWT_SECRET as string, { expiresIn: '365d' });
 
   return token;
 }

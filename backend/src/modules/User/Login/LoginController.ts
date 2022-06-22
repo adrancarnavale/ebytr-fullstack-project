@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { CustomError } from '../../../utils/CustomError';
-import { RegisterUsecase } from './RegisterUsecase';
+import { LoginUseCase } from './LoginUseCase';
 
-export class RegisterController {
-  constructor(private useCase: RegisterUsecase) {}
+export class LoginController {
+  constructor(private useCase: LoginUseCase) {}
 
   async handle(request: Request, response: Response) {
     try {
@@ -12,7 +12,7 @@ export class RegisterController {
 
       const token = await this.useCase.execute(userInfos);
 
-      return response.status(StatusCodes.CREATED).json({ token });
+      return response.status(StatusCodes.OK).json({ token });
     } catch (error) {
       return response
         .status((error as CustomError).status)

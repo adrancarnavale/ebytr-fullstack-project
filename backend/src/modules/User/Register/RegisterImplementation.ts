@@ -29,15 +29,15 @@ export class RegisterImplementation implements RegisterRepository {
 
         throw new CustomError(
           StatusCodes.INTERNAL_SERVER_ERROR,
-          'Internal server error, RegisterImplementation - line 20'
+          'Internal server error, UserRegisterImplementation'
         );
       })
       .finally(async () => {
         await prisma.$disconnect();
       });
 
-    await generateToken(userInfos);
+    const generatedToken = generateToken(userInfos);
 
-    return 'User successfully registered!';
+    return generatedToken;
   }
 }

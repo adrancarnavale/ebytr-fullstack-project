@@ -1,14 +1,11 @@
-import jwt, { JsonWebTokenError, JwtPayload, Secret } from 'jsonwebtoken';
+import jwt, { JsonWebTokenError, Jwt, JwtPayload, Secret } from 'jsonwebtoken';
 import 'dotenv./config';
 import { CustomError } from '../CustomError';
 
 const { JWT_SECRET } = process.env;
 
-export async function verifyToken(token: string): Promise<void> {
-  const decoded = jwt.verify(token, JWT_SECRET as string, function (err, data) {
-    if (err) throw new CustomError(500, 'Internal server Error - token.verify');
-    return data;
-  });
+export function verifyToken(token: string): JwtPayload {
+  const decoded = jwt.verify(token, JWT_SECRET as string);
 
-  return decoded;
+  return decoded as JwtPayload;
 }

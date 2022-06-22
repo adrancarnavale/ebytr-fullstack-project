@@ -78,7 +78,7 @@ export const usersData: Prisma.UserCreateInput[] = [
       create: [
         {
           title: 'marcar 3 gols no próximo baba',
-          status: 'pensing',
+          status: 'pending',
         },
         {
           title: 'trabalhar com c#',
