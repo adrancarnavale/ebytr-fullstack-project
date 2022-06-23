@@ -1,6 +1,5 @@
 import jwt, { JsonWebTokenError, Jwt, JwtPayload, Secret } from 'jsonwebtoken';
-import 'dotenv./config';
-import { CustomError } from '../CustomError';
+import 'dotenv/config';
 
 const { JWT_SECRET } = process.env;
 
