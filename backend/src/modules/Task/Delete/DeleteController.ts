@@ -1,18 +1,17 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { CustomError } from '../../../utils/CustomError';
-import { RegisterUsecase } from './RegisterUsecase';
+import { DeleteUseCase } from './DeleteUseCase';
 
-export class RegisterController {
-  constructor(private useCase: RegisterUsecase) {}
+export class DeleteController {
+  constructor(private useCase: DeleteUseCase) {}
 
   async handle(request: Request, response: Response) {
     try {
-      const { body: userInfos } = request;
+      const { id: taskId } = request.params;
+      await this.useCase.execute(taskId);
 
-      const token = await this.useCase.execute(userInfos);
-
-      return response.status(StatusCodes.CREATED).json({ token });
+      return response.status(StatusCodes.NO_CONTENT).end();
     } catch (error) {
       return response
         .status((error as CustomError).status)

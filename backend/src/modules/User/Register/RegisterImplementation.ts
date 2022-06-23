@@ -4,6 +4,7 @@ import { PrismaClient } from '@prisma/client';
 import { CustomError } from '../../../utils/CustomError';
 import bcrypt from 'bcryptjs';
 import { StatusCodes } from 'http-status-codes';
+import { generateToken } from '../../../utils/token/generateToken';
 
 export class RegisterImplementation implements RegisterRepository {
   async register(userInfos: IUser): Promise<string> {
@@ -28,13 +29,15 @@ export class RegisterImplementation implements RegisterRepository {
 
         throw new CustomError(
           StatusCodes.INTERNAL_SERVER_ERROR,
-          'Internal server error, RegisterImplementation - line 20'
+          'Internal server error, UserRegisterImplementation'
         );
       })
       .finally(async () => {
         await prisma.$disconnect();
       });
 
-    return 'User successfully registered!';
+    const generatedToken = generateToken(userInfos);
+
+    return generatedToken;
   }
 }

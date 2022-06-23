@@ -78,7 +78,7 @@ export const usersData: Prisma.UserCreateInput[] = [
       create: [
         {
           title: 'marcar 3 gols no próximo baba',
-          status: 'pensing',
+          status: 'pending',
         },
         {
           title: 'trabalhar com c#',
@@ -119,6 +119,46 @@ export const usersData: Prisma.UserCreateInput[] = [
         {
           title: 'ir pra paris',
           status: 'pending',
+        },
+        {
+          title: 'aprender golang',
+          status: 'pending',
+        },
+        {
+          title: 'aprender javascript',
+          status: 'done',
+        },
+        {
+          title: 'aprender typescript',
+          status: 'done',
+        },
+        {
+          title: 'aprender nextjs',
+          status: 'in progress',
+        },
+        {
+          title: 'aprender vuejs',
+          status: 'in progress',
+        },
+        {
+          title: 'aprender graphql',
+          status: 'in progress',
+        },
+        {
+          title: 'aprender postgresql',
+          status: 'in progress',
+        },
+        {
+          title: 'aprender mongodb',
+          status: 'done',
+        },
+        {
+          title: 'aprender rust',
+          status: 'pending',
+        },
+        {
+          title: 'aprender prisma',
+          status: 'done',
         },
       ],
     },
