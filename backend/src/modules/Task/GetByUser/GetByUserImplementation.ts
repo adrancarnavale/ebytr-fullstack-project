@@ -10,6 +10,7 @@ export class GetByUserImplementation implements GetByUserRepository {
         authorId: userId,
       },
       select: {
+        id: true,
         title: true,
         description: true,
         status: true,

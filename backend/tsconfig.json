@@ -25,7 +25,8 @@
     "src/db/seeders",
     "src/db/migrations",
     "dist/database/models",
-    "src/db/prisma/seed.ts"
+    "src/db/prisma/seed.ts",
+    "*.d.ts"
   ],
   "exclude": ["node_modules", "dist", "test"]
 }

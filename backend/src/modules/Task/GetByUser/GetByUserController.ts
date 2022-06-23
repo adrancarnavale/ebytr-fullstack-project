@@ -6,7 +6,7 @@ import { GetByUserUseCase } from './GetByUserUseCase';
 export class GetByUserController {
   constructor(private useCase: GetByUserUseCase) {}
 
-  async handle(request: Request, response: Response): Promise<Response> {
+  async handle(request: Request, response: Response) {
     try {
       const { id: userId } = request.params;
       const tasks = await this.useCase.execute(userId);

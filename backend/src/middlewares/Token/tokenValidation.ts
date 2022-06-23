@@ -8,14 +8,20 @@ export function tokenValidation(
   next: NextFunction
 ) {
   try {
-    const { authorization: token } = request.headers;
+    const {
+      headers: { authorization: token },
+      body,
+    } = request;
 
     if (!token)
       return response
         .status(StatusCodes.NOT_FOUND)
         .json({ message: 'Token not found' });
 
-    verifyToken(token);
+    const { data } = verifyToken(token);
+
+    body.email = data.email;
+    body.password = data.password;
 
     return next();
   } catch (error) {
