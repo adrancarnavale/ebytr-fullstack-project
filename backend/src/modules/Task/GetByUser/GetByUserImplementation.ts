@@ -3,7 +3,7 @@ import { ITask } from '../../../entities/ITask';
 import { GetByUserRepository } from './GetByUserRepository';
 
 export class GetByUserImplementation implements GetByUserRepository {
-  async getByUser(userId: string): Promise<ITask[]> {
+  async getByUser(userId: string, order: string): Promise<ITask[]> {
     const prisma = new PrismaClient();
     const tasks = await prisma.task.findMany({
       where: {
@@ -16,6 +16,14 @@ export class GetByUserImplementation implements GetByUserRepository {
         status: true,
         createdAt: true,
       },
+      orderBy: [
+        {
+          [order]: 'desc',
+        },
+        {
+          createdAt: 'desc',
+        },
+      ],
     });
 
     return tasks;
