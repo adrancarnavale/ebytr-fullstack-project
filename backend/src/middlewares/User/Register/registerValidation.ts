@@ -7,9 +7,9 @@ export function registerValidation(
   response: Response,
   next: NextFunction
 ) {
-  const { body: userInfos } = request;
+  const { body: user } = request;
 
-  const { error } = registerSchema.validate(userInfos);
+  const { error } = registerSchema.validate(user);
 
   if (!error) return next();
 

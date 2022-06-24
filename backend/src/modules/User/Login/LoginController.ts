@@ -8,9 +8,9 @@ export class LoginController {
 
   async handle(request: Request, response: Response) {
     try {
-      const { body: userInfos } = request;
+      const { body: user } = request;
 
-      const token = await this.useCase.execute(userInfos);
+      const token = await this.useCase.execute(user);
 
       return response.status(StatusCodes.OK).json({ token });
     } catch (error) {

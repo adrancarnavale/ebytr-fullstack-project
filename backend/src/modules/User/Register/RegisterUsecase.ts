@@ -4,8 +4,8 @@ import { RegisterRepository } from './RegisterRepository';
 export class RegisterUsecase {
   constructor(private implementation: RegisterRepository) {}
 
-  async execute(userInfos: IUser): Promise<string> {
-    const message = await this.implementation.register(userInfos);
+  async execute(user: IUser): Promise<string> {
+    const message = await this.implementation.register(user);
 
     return message;
   }

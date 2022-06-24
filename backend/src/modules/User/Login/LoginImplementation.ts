@@ -9,18 +9,19 @@ import { generateToken } from '../../../utils/token/generateToken';
 const prisma = new PrismaClient();
 
 export class LoginImplementation implements LoginRepository {
-  async login(userInfos: IUser): Promise<string> {
-    const { email, password: passRequest } = userInfos;
+  async login(user: IUser): Promise<string> {
+    const { email, password: passRequest } = user;
 
-    const user = await prisma.user.findUnique({
+    const foundUser = await prisma.user.findUnique({
       where: {
         email,
       },
     });
 
-    if (!user) throw new CustomError(StatusCodes.NOT_FOUND, 'User not found');
+    if (!foundUser)
+      throw new CustomError(StatusCodes.NOT_FOUND, 'User not found');
 
-    const { password } = user;
+    const { password } = foundUser;
 
     const isValid = bcrypt.compareSync(passRequest, password);
 
@@ -30,7 +31,7 @@ export class LoginImplementation implements LoginRepository {
         'invalid email or password'
       );
 
-    const token = generateToken(userInfos);
+    const token = generateToken(user);
 
     return token;
   }

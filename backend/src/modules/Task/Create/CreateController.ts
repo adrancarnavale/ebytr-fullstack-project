@@ -8,19 +8,16 @@ export class CreateController {
 
   async handle(request: Request, response: Response) {
     try {
-      const { email, title, description, status } = request.body;
+      const {
+        body: task,
+        userLoginData: { email: userEmail },
+      } = request;
 
-      const userEmail = email;
+      const createdTask = await this.useCase.execute(task, userEmail);
 
-      const taskInfos = {
-        title,
-        description,
-        status,
-      };
-
-      const task = await this.useCase.execute(taskInfos, userEmail);
-
-      return response.status(StatusCodes.CREATED).json({ message: task });
+      return response
+        .status(StatusCodes.CREATED)
+        .json({ message: createdTask });
     } catch (error) {
       return response
         .status((error as CustomError).status)

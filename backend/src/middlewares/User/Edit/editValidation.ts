@@ -1,15 +1,15 @@
 import { NextFunction, Request, response, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { loginSchema } from './loginSchema';
+import { editSchema } from './editSchema';
 
-export function loginValidation(
+export function editValidation(
   request: Request,
   response: Response,
   next: NextFunction
 ) {
   const { body: user } = request;
 
-  const { error } = loginSchema.validate(user);
+  const { error } = editSchema.validate(user);
 
   if (!error) return next();
 

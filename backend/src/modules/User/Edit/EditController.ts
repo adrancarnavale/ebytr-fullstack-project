@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import { Target } from '../../../@types';
 import { CustomError } from '../../../utils/CustomError';
 import { EditUseCase } from './EditUseCase';
 
@@ -8,11 +9,20 @@ export class EditController {
 
   async handle(request: Request, response: Response) {
     try {
-      const { body: task } = request;
+      const {
+        query: { target },
+        userLoginData,
+        body: newUserInfos,
+      } = request;
 
-      const edittedTask = await this.useCase.execute(task);
+      const user = {
+        ...newUserInfos,
+        ...userLoginData,
+      };
 
-      return response.status(StatusCodes.CREATED).json(edittedTask);
+      const edittedUser = await this.useCase.execute(user, target as Target);
+
+      return response.status(StatusCodes.CREATED).json(edittedUser);
     } catch (error) {
       return response
         .status((error as CustomError).status)

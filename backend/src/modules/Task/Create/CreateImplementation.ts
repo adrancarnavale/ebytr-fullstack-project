@@ -5,10 +5,10 @@ import { CustomError } from '../../../utils/CustomError';
 import { CreateRepository } from './CreateRepository';
 
 export class CreateImplementation implements CreateRepository {
-  async create(taskInfos: ITask, userEmail: string): Promise<ITask> {
+  async create(task: ITask, userEmail: string): Promise<ITask> {
     const prisma = new PrismaClient();
 
-    const { title, description, status } = taskInfos;
+    const { title, description, status } = task;
 
     const user = await prisma.user.findUnique({
       where: {
@@ -24,7 +24,7 @@ export class CreateImplementation implements CreateRepository {
 
     const { id: authorId } = user;
 
-    const task = await prisma.task.create({
+    const createdTask = await prisma.task.create({
       data: {
         authorId,
         title,
@@ -33,15 +33,15 @@ export class CreateImplementation implements CreateRepository {
       },
     });
 
-    const { id } = task;
+    const { id } = createdTask;
 
-    const createdTask = {
+    const serializedTask = {
       id,
       title,
       description,
       status,
     };
 
-    return createdTask;
+    return serializedTask;
   }
 }

@@ -7,8 +7,8 @@ import { StatusCodes } from 'http-status-codes';
 import { generateToken } from '../../../utils/token/generateToken';
 
 export class RegisterImplementation implements RegisterRepository {
-  async register(userInfos: IUser): Promise<string> {
-    const { firstName, lastName, email, password } = userInfos;
+  async register(user: IUser): Promise<string> {
+    const { firstName, lastName, email, password } = user;
 
     const prisma = new PrismaClient();
 
@@ -36,7 +36,7 @@ export class RegisterImplementation implements RegisterRepository {
         await prisma.$disconnect();
       });
 
-    const generatedToken = generateToken(userInfos);
+    const generatedToken = generateToken(user);
 
     return generatedToken;
   }
