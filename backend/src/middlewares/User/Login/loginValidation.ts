@@ -7,9 +7,9 @@ export function loginValidation(
   response: Response,
   next: NextFunction
 ) {
-  const { body: userInfos } = request;
+  const { body: user } = request;
 
-  const { error } = loginSchema.validate(userInfos);
+  const { error } = loginSchema.validate(user);
 
   if (!error) return next();
 

@@ -1,5 +1,5 @@
 import express from 'express';
-import { taskValidation } from '../../middlewares/Task/Create/taskValidation';
+import { taskValidation } from '../../middlewares/Task/taskValidation';
 import { tokenValidation } from '../../middlewares/Token/tokenValidation';
 import { create } from './Create/CreateIntegration';
 import { getByUser } from './GetByUser/GetByUserIntegration';

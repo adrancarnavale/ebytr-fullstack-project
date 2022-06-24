@@ -8,14 +8,7 @@ export class EditController {
 
   async handle(request: Request, response: Response) {
     try {
-      const { id, title, description, status } = request.body;
-
-      const task = {
-        id,
-        title,
-        description,
-        status,
-      };
+      const { body: task } = request;
 
       const edittedTask = await this.useCase.execute(task);
 

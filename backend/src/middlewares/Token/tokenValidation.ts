@@ -10,7 +10,6 @@ export function tokenValidation(
   try {
     const {
       headers: { authorization: token },
-      body,
     } = request;
 
     if (!token)
@@ -18,10 +17,14 @@ export function tokenValidation(
         .status(StatusCodes.NOT_FOUND)
         .json({ message: 'Token not found' });
 
-    const { data } = verifyToken(token);
+    const {
+      data: { email, password },
+    } = verifyToken(token);
 
-    body.email = data.email;
-    body.password = data.password;
+    request.userLoginData = {
+      email,
+      password,
+    };
 
     return next();
   } catch (error) {

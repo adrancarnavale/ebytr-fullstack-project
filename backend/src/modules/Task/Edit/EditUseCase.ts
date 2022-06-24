@@ -5,8 +5,8 @@ export class EditUseCase {
   constructor(private implementation: EditRepository) {}
 
   async execute(taskId: ITask): Promise<ITask> {
-    const task = await this.implementation.edit(taskId);
+    const edittedTask = await this.implementation.edit(taskId);
 
-    return task;
+    return edittedTask;
   }
 }

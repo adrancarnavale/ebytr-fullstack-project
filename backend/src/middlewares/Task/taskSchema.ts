@@ -1,6 +1,9 @@
 import Joi from 'joi';
 
 export const taskSchema = Joi.object({
+  id: Joi.string().messages({
+    'any.required': 'You must provide a valid task id',
+  }),
   title: Joi.string().min(3).max(36).required().messages({
     'string.min': 'Your title must have at least 3 characters',
     'string.max': 'Your title must have at most 36 characters',

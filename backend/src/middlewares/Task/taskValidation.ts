@@ -7,9 +7,9 @@ export function taskValidation(
   response: Response,
   next: NextFunction
 ) {
-  const { title, description, status } = request.body;
+  const { body: task } = request;
 
-  const { error } = taskSchema.validate({ title, description, status });
+  const { error } = taskSchema.validate(task);
 
   if (!error) return next();
 

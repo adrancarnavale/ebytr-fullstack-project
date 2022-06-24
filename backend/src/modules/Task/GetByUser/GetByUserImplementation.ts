@@ -1,11 +1,12 @@
 import { PrismaClient } from '@prisma/client';
+import { SortOrder } from '../../../@types';
 import { ITask } from '../../../entities/ITask';
 import { GetByUserRepository } from './GetByUserRepository';
 
 export class GetByUserImplementation implements GetByUserRepository {
-  async getByUser(userId: string, order: string): Promise<ITask[]> {
+  async getByUser(userId: string, sortOrder: SortOrder): Promise<ITask[]> {
     const prisma = new PrismaClient();
-    const tasks = await prisma.task.findMany({
+    const sortedTasks = await prisma.task.findMany({
       where: {
         authorId: userId,
       },
@@ -18,7 +19,7 @@ export class GetByUserImplementation implements GetByUserRepository {
       },
       orderBy: [
         {
-          [order]: 'desc',
+          [sortOrder]: 'desc',
         },
         {
           createdAt: 'desc',
@@ -26,6 +27,6 @@ export class GetByUserImplementation implements GetByUserRepository {
       ],
     });
 
-    return tasks;
+    return sortedTasks;
   }
 }
