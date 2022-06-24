@@ -1,11 +1,21 @@
+import { useState, useEffect } from 'react';
 import { FormButton } from '../../molecules/FormButton';
 import { FormContainer } from '../../molecules/FormContainer';
-import { TextLink } from '../../molecules/TextLink';
 import { UserInput } from '../../molecules/UserInput';
 
-export function LoginForm() {
+export function RegistrationForm() {
   return (
     <FormContainer>
+      <UserInput
+        inputId="firstNameInput"
+        content="Enter your first name: "
+        type="text"
+      />
+      <UserInput
+        inputId="lastNameInput"
+        content="Enter your last name: "
+        type="text"
+      />
       <UserInput
         inputId="emailInput"
         content="Enter your e-mail: "
@@ -16,8 +26,7 @@ export function LoginForm() {
         content="Enter your password: "
         type="password"
       />
-      <FormButton content="Log In" onClick={() => console.log('hi')} />
-      <TextLink target="/register" content="Don't have an account? Sign In!" />
+      <FormButton content="Submit" onClick={() => console.log('hi')} />
     </FormContainer>
   );
 }

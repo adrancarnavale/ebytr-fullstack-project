@@ -1,9 +1,9 @@
 import { HeaderTitle } from '../../molecules/HeaderTitle';
 
-export function LoginHeader() {
+export function RegistrationHeader() {
   return (
     <div>
-      <HeaderTitle content="Ebytr Task Manager" />
+      <HeaderTitle content="Register" />
     </div>
   );
 }
