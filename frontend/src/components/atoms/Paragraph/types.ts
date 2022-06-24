@@ -1,4 +1,4 @@
-export interface Paragraph {
+export interface IParagraph {
   className: string;
   content: string;
 }

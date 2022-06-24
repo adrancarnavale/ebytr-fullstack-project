@@ -1,5 +1,5 @@
-import { Input } from './types';
+import { IInput } from './types';
 
-export function Input({ className, type, inputId }: Input) {
+export function Input({ className, type, inputId }: IInput) {
   return <input id={inputId} className={className} type={type} />;
 }

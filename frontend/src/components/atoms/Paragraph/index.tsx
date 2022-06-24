@@ -1,5 +1,5 @@
-import { Paragraph } from './types';
+import { IParagraph } from './types';
 
-export function Paragraph({ className, content }: Paragraph) {
+export function Paragraph({ className, content }: IParagraph) {
   return <p className={className}>{content}</p>;
 }
