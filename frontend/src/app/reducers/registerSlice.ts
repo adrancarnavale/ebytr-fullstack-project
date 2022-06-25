@@ -6,6 +6,7 @@ import { ErrorData, registerState, UserInfos } from './types';
 const initialState: registerState = {
   token: '',
   isFetching: false,
+  isRegistered: false,
   error: {
     message: '',
     status: 0,
@@ -38,7 +39,11 @@ export const createUser = createAsyncThunk<
 export const registerSlice = createSlice({
   name: 'register',
   initialState,
-  reducers: {},
+  reducers: {
+    resetRegistrationStatus: (state) => {
+      state.isRegistered = false;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(createUser.pending, (state, _action) => {
       state.isFetching = true;
@@ -47,6 +52,7 @@ export const registerSlice = createSlice({
       state.isFetching = false;
       state.token = action.payload;
       localStorage.setItem('token', JSON.stringify(action.payload));
+      state.isRegistered = true;
     });
     builder.addCase(createUser.rejected, (state, action) => {
       state.isFetching = false;
@@ -56,6 +62,6 @@ export const registerSlice = createSlice({
   },
 });
 
-// export const {} = registerSlice.actions;
+export const { resetRegistrationStatus } = registerSlice.actions;
 
 export default registerSlice.reducer;

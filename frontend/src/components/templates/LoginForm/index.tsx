@@ -1,9 +1,18 @@
+import { useEffect } from 'react';
 import { FormButton } from '../../molecules/FormButton';
 import { FormContainer } from '../../molecules/FormContainer';
 import { TextLink } from '../../molecules/TextLink';
 import { UserInput } from '../../molecules/UserInput';
+import { resetRegistrationStatus } from '../../../app/reducers/registerSlice';
+import { useAppDispatch } from '../../../app/hooks';
 
 export function LoginForm() {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(resetRegistrationStatus());
+  }, []);
+
   return (
     <FormContainer>
       <UserInput

@@ -1,3 +1,4 @@
+import { Navigate } from 'react-router-dom';
 import { FormButton } from '../../molecules/FormButton';
 import { FormContainer } from '../../molecules/FormContainer';
 import { UserInput } from '../../molecules/UserInput';
@@ -8,11 +9,13 @@ export function RegistrationForm() {
   const {
     register: {
       error: { message },
+      isRegistered,
     },
   } = useAppSelector((state) => state);
 
   return (
     <FormContainer>
+      {isRegistered && <Navigate to="/" />}
       <UserInput
         inputId="firstNameInput"
         content="Enter your first name: "
