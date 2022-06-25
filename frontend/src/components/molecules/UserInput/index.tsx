@@ -1,6 +1,6 @@
 import { Label } from '../../atoms/Label';
 import { Input } from '../../atoms/Input';
-import { IInput } from '../../../types';
+import { IInput } from '../../types';
 
 export function UserInput({
   inputId,

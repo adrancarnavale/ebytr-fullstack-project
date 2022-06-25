@@ -10,13 +10,13 @@ export function LoginForm() {
         inputId="emailInput"
         content="Enter your e-mail: "
         type="email"
-        value=""
+        formRegister="email"
       />
       <UserInput
         inputId="passwordInput"
         content="Enter your password: "
         type="password"
-        value=""
+        formRegister="password"
       />
       <FormButton content="Log In" />
       <TextLink target="/register" content="Don't have an account? Sign In!" />

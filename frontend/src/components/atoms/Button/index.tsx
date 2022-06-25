@@ -1,4 +1,4 @@
-import { IButton } from '../../../types';
+import { IButton } from '../../types';
 
 export function Button({ content, onClick, className }: IButton) {
   return (

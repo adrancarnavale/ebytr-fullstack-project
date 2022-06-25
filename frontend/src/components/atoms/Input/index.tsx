@@ -1,4 +1,4 @@
-import { IInput } from '../../../types';
+import { IInput } from '../../types';
 
 export function Input({
   className,

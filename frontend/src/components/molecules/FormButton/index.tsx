@@ -1,5 +1,5 @@
 import { Button } from '../../atoms/Button';
-import { IButton } from '../../../types';
+import { IButton } from '../../types';
 
 export function FormButton({ content, onClick }: IButton) {
   return (
