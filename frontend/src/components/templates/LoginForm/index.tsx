@@ -4,17 +4,29 @@ import { FormContainer } from '../../molecules/FormContainer';
 import { TextLink } from '../../molecules/TextLink';
 import { UserInput } from '../../molecules/UserInput';
 import { resetRegistrationStatus } from '../../../app/reducers/registerSlice';
-import { useAppDispatch } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { SuccessParagraph } from '../../molecules/SuccessParagraph';
 
 export function LoginForm() {
+  const ONE_AND_HALF_SECOND = 1500;
+
   const dispatch = useAppDispatch();
 
+  const {
+    register: { isRegistered },
+  } = useAppSelector((state) => state);
+
   useEffect(() => {
-    dispatch(resetRegistrationStatus());
+    setTimeout(() => {
+      dispatch(resetRegistrationStatus());
+    }, ONE_AND_HALF_SECOND);
   }, []);
 
   return (
     <FormContainer>
+      {isRegistered && (
+        <SuccessParagraph content="You have been successfully registered" />
+      )}
       <UserInput
         inputId="emailInput"
         content="Enter your e-mail: "
@@ -28,7 +40,12 @@ export function LoginForm() {
         formRegister="password"
       />
       <FormButton content="Log In" />
-      <TextLink target="/register" content="Don't have an account? Sign In!" />
+      {!isRegistered && (
+        <TextLink
+          target="/register"
+          content="Don't have an account? Sign In!"
+        />
+      )}
     </FormContainer>
   );
 }

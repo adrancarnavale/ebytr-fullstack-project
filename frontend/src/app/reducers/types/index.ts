@@ -15,6 +15,15 @@ export interface UserInfos {
   password: string;
 }
 
+export interface LoginInfos {
+  email: string;
+  password: string;
+}
+
+export interface TokenInfos {
+  token: string;
+}
+
 export interface ErrorData {
   status: number;
   message: string;
