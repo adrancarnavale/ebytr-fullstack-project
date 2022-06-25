@@ -1,7 +1,7 @@
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useAppDispatch } from '../../../app/hooks';
-import { createUser } from '../../../app/reducers/userSlice';
+import { createUser } from '../../../app/reducers/registerSlice';
 import { IFormContainer, IUserInfos } from '../../types';
 
 export function FormContainer({ children }: IFormContainer) {

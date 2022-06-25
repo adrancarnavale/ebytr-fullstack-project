@@ -1,4 +1,4 @@
-export interface UserState {
+export interface registerState {
   token: string;
   isFetching: boolean;
   error: {

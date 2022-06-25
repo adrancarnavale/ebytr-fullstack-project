@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { api } from '../../utils/api';
 import { CustomError } from '../../utils/CustomError';
-import { ErrorData, UserState, UserInfos } from './types';
+import { ErrorData, registerState, UserInfos } from './types';
 
-const initialState: UserState = {
+const initialState: registerState = {
   token: '',
   isFetching: false,
   error: {
@@ -35,8 +35,8 @@ export const createUser = createAsyncThunk<
   }
 });
 
-export const userSlice = createSlice({
-  name: 'user',
+export const registerSlice = createSlice({
+  name: 'register',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -56,6 +56,6 @@ export const userSlice = createSlice({
   },
 });
 
-// export const {} = userSlice.actions;
+// export const {} = registerSlice.actions;
 
-export default userSlice.reducer;
+export default registerSlice.reducer;

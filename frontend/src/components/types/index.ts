@@ -40,7 +40,7 @@ export interface ILinkTo {
 }
 
 export interface IParagraph {
-  className: string;
+  className?: string;
   content: string;
 }
 
