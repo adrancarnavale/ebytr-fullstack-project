@@ -1,8 +1,8 @@
-import { IButton } from './types';
+import { IButton } from '../../../types';
 
 export function Button({ content, onClick, className }: IButton) {
   return (
-    <button type="button" onClick={onClick} className={className}>
+    <button type="submit" onClick={onClick} className={className}>
       {content}
     </button>
   );

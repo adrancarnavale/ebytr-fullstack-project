@@ -1,6 +1,6 @@
 import { LinkTo } from '../../atoms/LinkTo';
 import { Paragraph } from '../../atoms/Paragraph';
-import { ITextLink } from './types';
+import { ITextLink } from '../../../types';
 
 export function TextLink({ target, content }: ITextLink) {
   return (

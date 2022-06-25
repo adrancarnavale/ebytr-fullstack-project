@@ -1,5 +1,18 @@
-import { IInput } from './types';
+import { IInput } from '../../../types';
 
-export function Input({ className, type, inputId }: IInput) {
-  return <input id={inputId} className={className} type={type} />;
+export function Input({
+  className,
+  type,
+  inputId,
+  formRegister,
+  formHook,
+}: IInput) {
+  return (
+    <input
+      id={inputId}
+      className={className}
+      type={type}
+      {...formHook?.register(formRegister)}
+    />
+  );
 }

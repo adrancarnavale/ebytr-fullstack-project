@@ -1,4 +1,4 @@
-import { ILabel } from './types';
+import { ILabel } from '../../../types';
 
 export function Label({ inputId, children, content, className }: ILabel) {
   return (

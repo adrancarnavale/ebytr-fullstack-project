@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { StatusCodes } from 'http-status-codes';
-import axios from 'axios';
+import { api } from '../../utils/api';
 
 interface TokenState {
   token: string;
@@ -41,14 +41,12 @@ export const createUser = createAsyncThunk<
   UserInfos,
   { rejectValue: ErrorData }
 >('token/createUser', async (userInfos: UserInfos, thunkApi) => {
-  const { data: response } = await axios.post('/user/register', {
-    body: {
-      ...userInfos,
-    },
-  });
+  const { data: response } = await api.post('/user/register', { ...userInfos });
 
-  if (response.status !== StatusCodes.CREATED)
+  if (response.status !== StatusCodes.CREATED) {
+    console.log(response);
     return thunkApi.rejectWithValue(response as ErrorData);
+  }
 
   return response.token as Token;
 });
@@ -66,6 +64,7 @@ export const tokenSlice = createSlice({
       state.isFetching = true;
     });
     builder.addCase(createUser.rejected, (state, action) => {
+      state.isFetching = false;
       state.error.message = action.payload?.message as string;
       state.error.status = action.payload?.status as number;
     });
