@@ -1,15 +1,17 @@
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useAppDispatch } from '../../../app/hooks';
-import { createUser } from '../../../app/reducers/registerSlice';
+import { createUser, logInUser } from '../../../app/reducers/registerSlice';
 import { IFormContainer, IUserInfos } from '../../types';
 
-export function FormContainer({ children }: IFormContainer) {
+export function FormContainer({ children, eventTrigger }: IFormContainer) {
   const dispatch = useAppDispatch();
   const formHook = useForm<IUserInfos>();
 
-  const onSubmit: SubmitHandler<IUserInfos> = (data: IUserInfos) =>
-    dispatch(createUser(data));
+  const onSubmit: SubmitHandler<IUserInfos> = (data: IUserInfos) => {
+    if (eventTrigger === 'register') dispatch(createUser(data));
+    dispatch(logInUser(data));
+  };
 
   // https://stackoverflow.com/questions/32370994/how-to-pass-props-to-this-props-children
   const childrenWithProps = React.Children.map(children, (child) => {

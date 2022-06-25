@@ -13,6 +13,7 @@ const initialState: registerState = {
   token: '',
   isFetching: false,
   isRegistered: false,
+  isLogged: false,
   error: {
     message: '',
     status: 0,
@@ -25,7 +26,7 @@ export const createUser = createAsyncThunk<
   { rejectValue: ErrorData }
 >('user/createUser', async (userInfos, thunkApi) => {
   try {
-    const { data: response } = await api.post('/user/register', {
+    const { data: response } = await api.post<TokenInfos>('/user/register', {
       ...userInfos,
     });
 
@@ -50,7 +51,7 @@ export const logInUser = createAsyncThunk<
   { rejectValue: ErrorData }
 >('user/logInUser', async (loginInfos, thunkApi) => {
   try {
-    const { data: response } = await api.post('/user/login', {
+    const { data: response } = await api.post<TokenInfos>('/user/login', {
       ...loginInfos,
     });
     return response;
@@ -97,6 +98,9 @@ export const registerSlice = createSlice({
     });
     builder.addCase(logInUser.fulfilled, (state, action) => {
       state.isFetching = false;
+      state.isLogged = true;
+      state.error.message = '';
+      state.error.status = 0;
       state.token = action.payload.token;
       localStorage.setItem('token', JSON.stringify(action.payload.token));
     });

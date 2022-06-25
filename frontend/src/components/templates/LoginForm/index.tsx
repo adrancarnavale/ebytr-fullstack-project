@@ -6,6 +6,7 @@ import { UserInput } from '../../molecules/UserInput';
 import { resetRegistrationStatus } from '../../../app/reducers/registerSlice';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { SuccessParagraph } from '../../molecules/SuccessParagraph';
+import { ErrorParagraph } from '../../molecules/ErrorParagraph';
 
 export function LoginForm() {
   const ONE_AND_HALF_SECOND = 1500;
@@ -13,7 +14,10 @@ export function LoginForm() {
   const dispatch = useAppDispatch();
 
   const {
-    register: { isRegistered },
+    register: {
+      error: { message },
+      isRegistered,
+    },
   } = useAppSelector((state) => state);
 
   useEffect(() => {
@@ -23,7 +27,7 @@ export function LoginForm() {
   }, []);
 
   return (
-    <FormContainer>
+    <FormContainer eventTrigger="login">
       {isRegistered && (
         <SuccessParagraph content="You have been successfully registered" />
       )}
@@ -33,12 +37,16 @@ export function LoginForm() {
         type="email"
         formRegister="email"
       />
+      {message.includes('email address') && (
+        <ErrorParagraph content={message} />
+      )}
       <UserInput
         inputId="passwordInput"
         content="Enter your password: "
         type="password"
         formRegister="password"
       />
+      {message.includes('password') && <ErrorParagraph content={message} />}
       <FormButton content="Log In" />
       {!isRegistered && (
         <TextLink

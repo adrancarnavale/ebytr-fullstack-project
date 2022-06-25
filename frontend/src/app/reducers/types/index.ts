@@ -2,6 +2,7 @@ export interface registerState {
   token: string;
   isFetching: boolean;
   isRegistered: boolean;
+  isLogged: boolean;
   error: {
     message: string;
     status: number;

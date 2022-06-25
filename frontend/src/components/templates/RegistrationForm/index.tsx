@@ -14,7 +14,7 @@ export function RegistrationForm() {
   } = useAppSelector((state) => state);
 
   return (
-    <FormContainer>
+    <FormContainer eventTrigger="register">
       {isRegistered && <Navigate to="/" />}
       <UserInput
         inputId="firstNameInput"

@@ -46,6 +46,7 @@ export interface IParagraph {
 
 export interface IFormContainer {
   children: ReactNode;
+  eventTrigger: 'login' | 'register';
 }
 
 export interface IUserInfos {
