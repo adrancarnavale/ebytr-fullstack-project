@@ -5,11 +5,12 @@ import { CustomError } from '../../../utils/CustomError';
 import { LoginRepository } from './LoginRepository';
 import bcrypt from 'bcryptjs';
 import { generateToken } from '../../../utils/token/generateToken';
+import { UserLoginResponse } from '../../../DTOs/UserLoginResponseDTO';
 
 const prisma = new PrismaClient();
 
 export class LoginImplementation implements LoginRepository {
-  async login(userInfos: IUser): Promise<string> {
+  async login(userInfos: IUser): Promise<UserLoginResponse> {
     const { email, password: passRequest } = userInfos;
 
     const user = await prisma.user.findUnique({
@@ -31,7 +32,13 @@ export class LoginImplementation implements LoginRepository {
       );
 
     const token = generateToken(userInfos);
+    const id = user.id;
 
-    return token;
+    const userLoginResponse = {
+      token,
+      id,
+    };
+
+    return userLoginResponse;
   }
 }
