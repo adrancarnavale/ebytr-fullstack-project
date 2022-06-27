@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 import { FormButton } from '../../molecules/FormButton';
 import { FormContainer } from '../../molecules/FormContainer';
 import { TextLink } from '../../molecules/TextLink';
@@ -17,6 +18,7 @@ export function LoginForm() {
     register: {
       error: { message },
       isRegistered,
+      isLogged,
     },
   } = useAppSelector((state) => state);
 
@@ -28,6 +30,7 @@ export function LoginForm() {
 
   return (
     <FormContainer eventTrigger="login">
+      {isLogged && <Navigate to="/tasks" />}
       <UserInput
         inputId="emailInput"
         content="Enter your e-mail: "

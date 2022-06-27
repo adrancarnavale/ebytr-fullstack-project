@@ -1,4 +1,4 @@
-export interface registerState {
+export interface RegisterState {
   token: string;
   id: string;
   isFetching: boolean;
@@ -30,4 +30,22 @@ export interface LoginReturnInfos {
 export interface ErrorData {
   status: number;
   message: string;
+}
+
+export interface TaskState {
+  tasks: Task[];
+  isFetching: boolean;
+  order: 'createdAt' | 'status' | 'title';
+  error: {
+    message: string;
+    status: number;
+  };
+}
+
+export interface Task {
+  id?: string;
+  authorId?: string;
+  title: string;
+  description: string | null;
+  status: string;
 }

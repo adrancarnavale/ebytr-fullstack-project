@@ -1,15 +1,15 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { api } from '../../utils/api';
 import { CustomError } from '../../utils/CustomError';
 import {
   ErrorData,
   LoginInfos,
-  registerState,
+  RegisterState,
   LoginReturnInfos,
   UserInfos,
 } from './types';
 
-const initialState: registerState = {
+const initialState: RegisterState = {
   token: '',
   id: '',
   isFetching: false,

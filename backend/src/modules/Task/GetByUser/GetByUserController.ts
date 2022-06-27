@@ -9,6 +9,7 @@ export class GetByUserController {
   async handle(request: Request, response: Response) {
     try {
       const { id: userId } = request.params;
+
       const { order } = request.query;
       const tasks = await this.useCase.execute(userId, order as string);
 
