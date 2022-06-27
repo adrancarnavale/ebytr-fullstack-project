@@ -9,7 +9,10 @@ export function FormContainer({ children, eventTrigger }: IFormContainer) {
   const formHook = useForm<IUserInfos>();
 
   const onSubmit: SubmitHandler<IUserInfos> = (data: IUserInfos) => {
-    if (eventTrigger === 'register') dispatch(createUser(data));
+    if (eventTrigger === 'register') {
+      dispatch(createUser(data));
+      return;
+    }
     dispatch(logInUser(data));
   };
 

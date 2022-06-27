@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { api } from '../../utils/api';
 import { CustomError } from '../../utils/CustomError';
+import { setStorage } from '../../utils/storage/setStorage';
 import {
   ErrorData,
   LoginInfos,
@@ -89,7 +90,7 @@ export const registerSlice = createSlice({
     builder.addCase(createUser.fulfilled, (state, action) => {
       state.isFetching = false;
       state.token = action.payload.token;
-      localStorage.setItem('token', JSON.stringify(action.payload.token));
+      setStorage('token', action.payload.token);
       state.isRegistered = true;
     });
     builder.addCase(createUser.rejected, (state, action) => {
@@ -108,10 +109,11 @@ export const registerSlice = createSlice({
       state.error.status = 0;
       state.token = action.payload.token;
       state.id = action.payload.id;
-      localStorage.setItem('token', JSON.stringify(action.payload.token));
-      localStorage.setItem('id', JSON.stringify(action.payload.id));
+      setStorage('token', action.payload.token);
+      setStorage('id', action.payload.id);
     });
     builder.addCase(logInUser.rejected, (state, action) => {
+      console.log(action.payload);
       state.isFetching = false;
       state.error.message = action.payload?.message as string;
       state.error.status = action.payload?.status as number;

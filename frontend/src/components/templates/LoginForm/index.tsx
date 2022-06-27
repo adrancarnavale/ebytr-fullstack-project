@@ -37,9 +37,7 @@ export function LoginForm() {
         type="email"
         formRegister="email"
       />
-      {message.includes('email address') && (
-        <ErrorParagraph content={message} />
-      )}
+      {message.includes('email') && <ErrorParagraph content={message} />}
       <UserInput
         inputId="passwordInput"
         content="Enter your password: "

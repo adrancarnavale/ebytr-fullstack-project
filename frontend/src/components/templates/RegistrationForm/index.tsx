@@ -1,9 +1,11 @@
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { FormButton } from '../../molecules/FormButton';
 import { FormContainer } from '../../molecules/FormContainer';
 import { UserInput } from '../../molecules/UserInput';
 import { useAppSelector } from '../../../app/hooks';
 import { ErrorParagraph } from '../../molecules/ErrorParagraph';
+import { DefaultButton } from '../../molecules/DefaultButton';
+import { ButtonLink } from '../../molecules/ButtonLink';
 
 export function RegistrationForm() {
   const {
@@ -47,6 +49,7 @@ export function RegistrationForm() {
       />
       {message.includes('password') && <ErrorParagraph content={message} />}
       <FormButton content="Submit" />
+      <ButtonLink target="/" content="Back" />
     </FormContainer>
   );
 }

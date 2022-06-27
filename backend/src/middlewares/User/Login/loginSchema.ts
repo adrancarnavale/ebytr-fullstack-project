@@ -7,6 +7,7 @@ export const loginSchema = Joi.object({
   email: Joi.string().email().required().messages({
     'string.email': 'Please enter a valid email address',
     'any.required': 'Your email must not be empty',
+    'string.empty': 'Your email must not be empty',
   }),
   password: Joi.string()
     .pattern(REGEX, {
@@ -17,5 +18,6 @@ export const loginSchema = Joi.object({
       'string.pattern.name':
         'Your password must have at least eight characters, one uppercase letter, and one number',
       'any.required': 'Your password must not be empty',
+      'string.empty': 'Your password must not be empty',
     }),
 });

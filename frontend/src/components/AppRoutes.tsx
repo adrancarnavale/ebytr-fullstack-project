@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { Login } from '../pages/Login';
 import { Registration } from '../pages/Registration';
-import { Tasks } from '../pages/Tasks';
+import { Tasks } from '../pages/Task';
 
 export function AppRoutes() {
   return (

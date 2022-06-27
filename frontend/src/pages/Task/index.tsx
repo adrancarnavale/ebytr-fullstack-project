@@ -1,18 +1,19 @@
 import { useEffect } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import { getTasksFromUser } from '../../app/reducers/TaskSlice';
+import { TaskHeader } from '../../components/templates/TaskHeader';
+import { getStorage } from '../../utils/storage/getStorage';
 
 export function Tasks() {
   const dispatch = useAppDispatch();
+  const userId = getStorage('id');
   useEffect(() => {
-    dispatch(
-      getTasksFromUser(JSON.parse(localStorage.getItem('id') as string))
-    );
+    dispatch(getTasksFromUser(userId));
   }, []);
 
   return (
     <div>
-      <h1>Tasks</h1>
+      <TaskHeader />
     </div>
   );
 }

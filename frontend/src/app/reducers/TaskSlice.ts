@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { api } from '../../utils/api';
 import { CustomError } from '../../utils/CustomError';
+import { getStorage } from '../../utils/storage/getStorage';
 import { ErrorData, Task, TaskState } from './types';
 
 const initialState: TaskState = {
@@ -21,7 +22,7 @@ export const getTasksFromUser = createAsyncThunk<
   try {
     const config = {
       headers: {
-        authorization: JSON.parse(localStorage.getItem('token') as string),
+        authorization: getStorage('token'),
       },
     };
 
@@ -54,8 +55,6 @@ export const taskSlice = createSlice({
       state.isFetching = true;
     });
     builder.addCase(getTasksFromUser.fulfilled, (state, action) => {
-      console.log(action);
-
       state.isFetching = false;
       state.tasks = [...action.payload];
     });

@@ -11,6 +11,7 @@ export interface IInput {
 }
 
 export interface IButton {
+  target?: string;
   content: string;
   onClick?: () => void;
   className?: string;
