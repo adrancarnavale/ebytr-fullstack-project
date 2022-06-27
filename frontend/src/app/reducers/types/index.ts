@@ -48,4 +48,5 @@ export interface Task {
   title: string;
   description: string | null;
   status: string;
+  created: string;
 }
