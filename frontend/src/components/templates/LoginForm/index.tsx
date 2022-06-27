@@ -28,9 +28,6 @@ export function LoginForm() {
 
   return (
     <FormContainer eventTrigger="login">
-      {isRegistered && (
-        <SuccessParagraph content="You have been successfully registered" />
-      )}
       <UserInput
         inputId="emailInput"
         content="Enter your e-mail: "
@@ -48,6 +45,10 @@ export function LoginForm() {
       />
       {message.includes('password') && <ErrorParagraph content={message} />}
       <FormButton content="Log In" />
+      {isRegistered && (
+        <SuccessParagraph content="You have been successfully registered" />
+      )}
+      {message.includes('not found') && <ErrorParagraph content={message} />}
       {!isRegistered && (
         <TextLink
           target="/register"

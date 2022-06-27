@@ -5,12 +5,13 @@ import {
   ErrorData,
   LoginInfos,
   registerState,
-  TokenInfos,
+  LoginReturnInfos,
   UserInfos,
 } from './types';
 
 const initialState: registerState = {
   token: '',
+  id: '',
   isFetching: false,
   isRegistered: false,
   isLogged: false,
@@ -21,14 +22,17 @@ const initialState: registerState = {
 };
 
 export const createUser = createAsyncThunk<
-  TokenInfos,
+  LoginReturnInfos,
   UserInfos,
   { rejectValue: ErrorData }
 >('user/createUser', async (userInfos, thunkApi) => {
   try {
-    const { data: response } = await api.post<TokenInfos>('/user/register', {
-      ...userInfos,
-    });
+    const { data: response } = await api.post<LoginReturnInfos>(
+      '/user/register',
+      {
+        ...userInfos,
+      }
+    );
 
     return response;
   } catch (error) {
@@ -46,14 +50,15 @@ export const createUser = createAsyncThunk<
 });
 
 export const logInUser = createAsyncThunk<
-  TokenInfos,
+  LoginReturnInfos,
   LoginInfos,
   { rejectValue: ErrorData }
 >('user/logInUser', async (loginInfos, thunkApi) => {
   try {
-    const { data: response } = await api.post<TokenInfos>('/user/login', {
+    const { data: response } = await api.post<LoginReturnInfos>('/user/login', {
       ...loginInfos,
     });
+
     return response;
   } catch (error) {
     const { status, message } = new CustomError(
@@ -102,7 +107,9 @@ export const registerSlice = createSlice({
       state.error.message = '';
       state.error.status = 0;
       state.token = action.payload.token;
+      state.id = action.payload.id;
       localStorage.setItem('token', JSON.stringify(action.payload.token));
+      localStorage.setItem('id', JSON.stringify(action.payload.id));
     });
     builder.addCase(logInUser.rejected, (state, action) => {
       state.isFetching = false;

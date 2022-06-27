@@ -3,7 +3,7 @@ import { LoginForm } from '../../components/templates/LoginForm';
 
 export function Login() {
   return (
-    <div className="flex flex-col justify-center content-center">
+    <div className="flex flex-col justify-center items-center">
       <LoginHeader />
       <LoginForm />
     </div>

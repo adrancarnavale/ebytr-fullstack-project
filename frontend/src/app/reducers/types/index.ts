@@ -1,5 +1,6 @@
 export interface registerState {
   token: string;
+  id: string;
   isFetching: boolean;
   isRegistered: boolean;
   isLogged: boolean;
@@ -21,8 +22,9 @@ export interface LoginInfos {
   password: string;
 }
 
-export interface TokenInfos {
+export interface LoginReturnInfos {
   token: string;
+  id: string;
 }
 
 export interface ErrorData {

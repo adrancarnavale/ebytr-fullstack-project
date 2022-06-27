@@ -9,8 +9,6 @@ export function loginValidation(
 ) {
   const { body: userInfos } = request;
 
-  console.log(userInfos);
-
   const { error } = loginSchema.validate(userInfos);
 
   if (!error) return next();
