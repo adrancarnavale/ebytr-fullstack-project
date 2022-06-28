@@ -66,15 +66,24 @@ export interface ITextLink {
   content: string;
 }
 
+export interface IDisclosureProps {
+  title: string;
+  content: string;
+  status: 'done' | 'pending' | 'in progress';
+  created: string;
+}
+
+export type TStatus = 'done' | 'pending' | 'in progress';
+
 export interface ITask {
   id?: string;
   authorId?: string;
   title: string;
   description: string | null;
-  status: string;
-  created: string;
+  status: TStatus;
+  createdAt: string;
 }
 
-export interface ITaskTableElements {
-  tasks: ITask[];
+export interface ITaskContent {
+  elements: ITask[];
 }

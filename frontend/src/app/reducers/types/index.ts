@@ -42,11 +42,13 @@ export interface TaskState {
   };
 }
 
+export type TStatus = 'done' | 'pending' | 'in progress';
+
 export interface Task {
   id?: string;
   authorId?: string;
   title: string;
   description: string | null;
-  status: string;
-  created: string;
+  status: TStatus;
+  createdAt: string;
 }
