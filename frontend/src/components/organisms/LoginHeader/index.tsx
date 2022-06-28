@@ -1,9 +1,10 @@
+import { Container } from '../../atoms/Container';
 import { HeaderTitle } from '../../molecules/HeaderTitle';
 
 export function LoginHeader() {
   return (
-    <div>
+    <Container>
       <HeaderTitle content="Ebytr Task Manager" />
-    </div>
+    </Container>
   );
 }

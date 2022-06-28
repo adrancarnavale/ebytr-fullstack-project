@@ -22,7 +22,7 @@ export function UserInput({
           formHook={formHook}
           inputId={inputId}
           type={type}
-          className="bg-nord-light-1 border-2 border-nord-dark-2 rounded-md shadow-sm w-full text-nord-dark-1 pl-[1vw] h-[4.5vh]"
+          className="bg-nord-light-1 rounded-md shadow-sm w-full text-nord-dark-1 pl-[1vw] h-[4.5vh] focus:ring-2 focus:ring-nord-aurora-4 focus:outline-none"
         />
       </Label>
     </Container>

@@ -43,6 +43,7 @@ export interface ILabelProps {
 export interface ILinkProps {
   target: string;
   children: ReactNode;
+  className?: string;
 }
 
 export interface IParagraphProps {

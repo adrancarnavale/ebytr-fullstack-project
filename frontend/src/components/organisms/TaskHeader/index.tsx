@@ -1,9 +1,10 @@
+import { Container } from '../../atoms/Container';
 import { HeaderTitle } from '../../molecules/HeaderTitle';
 
 export function TaskHeader() {
   return (
-    <div>
+    <Container>
       <HeaderTitle content="Your tasks" />
-    </div>
+    </Container>
   );
 }

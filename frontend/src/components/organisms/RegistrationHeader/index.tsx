@@ -1,9 +1,10 @@
+import { Container } from '../../atoms/Container';
 import { HeaderTitle } from '../../molecules/HeaderTitle';
 
 export function RegistrationHeader() {
   return (
-    <div>
+    <Container>
       <HeaderTitle content="Register" />
-    </div>
+    </Container>
   );
 }

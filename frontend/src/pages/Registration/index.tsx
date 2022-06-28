@@ -1,11 +1,12 @@
+import { PageContainer } from '../../components/molecules/PageContainer';
 import { RegistrationForm } from '../../components/organisms/RegistrationForm';
 import { RegistrationHeader } from '../../components/organisms/RegistrationHeader';
 
 export function Registration() {
   return (
-    <div className="flex flex-col justify-center content-center">
+    <PageContainer>
       <RegistrationHeader />
       <RegistrationForm />
-    </div>
+    </PageContainer>
   );
 }

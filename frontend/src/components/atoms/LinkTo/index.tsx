@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
 import { ILinkProps } from '../../types';
 
-export function LinkTo({ target, children }: ILinkProps) {
-  return <Link to={target}>{children}</Link>;
+export function LinkTo({ target, children, className }: ILinkProps) {
+  return (
+    <Link className={className} to={target}>
+      {children}
+    </Link>
+  );
 }

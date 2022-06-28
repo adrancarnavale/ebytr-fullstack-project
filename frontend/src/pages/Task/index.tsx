@@ -5,6 +5,7 @@ import { getTasksFromUser } from '../../app/reducers/TaskSlice';
 import { TaskHeader } from '../../components/organisms/TaskHeader';
 import { getStorage } from '../../utils/storage/getStorage';
 import { TaskContent } from '../../components/organisms/TaskContent';
+import { PageContainer } from '../../components/molecules/PageContainer';
 
 export function Tasks() {
   const dispatch = useAppDispatch();
@@ -20,9 +21,9 @@ export function Tasks() {
   } = useAppSelector((state) => state);
 
   return (
-    <div>
+    <PageContainer>
       <TaskHeader />
       <TaskContent elements={tasks} />
-    </div>
+    </PageContainer>
   );
 }

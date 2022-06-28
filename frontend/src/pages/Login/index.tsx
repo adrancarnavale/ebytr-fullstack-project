@@ -1,11 +1,13 @@
 import { LoginHeader } from '../../components/organisms/LoginHeader';
 import { LoginForm } from '../../components/organisms/LoginForm';
+import { Container } from '../../components/atoms/Container';
+import { PageContainer } from '../../components/molecules/PageContainer';
 
 export function Login() {
   return (
-    <div className="flex flex-col justify-center items-center">
+    <PageContainer>
       <LoginHeader />
       <LoginForm />
-    </div>
+    </PageContainer>
   );
 }
