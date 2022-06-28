@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { UseFormReturn } from 'react-hook-form';
 
-export interface IInput {
+export interface IInputProps {
   className?: string;
   type: string;
   inputId: string;
@@ -10,42 +10,47 @@ export interface IInput {
   formRegister: keyof IUserInfos;
 }
 
-export interface IButton {
+export interface IContainerProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export interface IButtonProps {
   target?: string;
   content: string;
   onClick?: () => void;
   className?: string;
 }
 
-export interface IHeader {
+export interface IHeaderProps {
   content: string;
   className: string;
 }
 
-export interface IImage {
+export interface IImageProps {
   source: string;
   className: string;
   alt: string;
 }
 
-export interface ILabel {
+export interface ILabelProps {
   inputId: string;
   content: string;
   children: ReactNode;
   className: string;
 }
 
-export interface ILinkTo {
+export interface ILinkProps {
   target: string;
   children: ReactNode;
 }
 
-export interface IParagraph {
+export interface IParagraphProps {
   className?: string;
   content: string;
 }
 
-export interface IFormContainer {
+export interface IFormContainerProps {
   children: ReactNode;
   eventTrigger: 'login' | 'register';
 }
@@ -57,11 +62,11 @@ export interface IUserInfos {
   password: string;
 }
 
-export interface IHeaderTitle {
+export interface IHeaderTitleProps {
   content: string;
 }
 
-export interface ITextLink {
+export interface ITextLinkProps {
   target: string;
   content: string;
 }
@@ -84,6 +89,6 @@ export interface ITask {
   createdAt: string;
 }
 
-export interface ITaskContent {
+export interface ITaskContentProps {
   elements: ITask[];
 }

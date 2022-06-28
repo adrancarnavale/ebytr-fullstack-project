@@ -1,4 +1,4 @@
-import { IInput } from '../../types';
+import { IInputProps } from '../../types';
 
 export function Input({
   className,
@@ -6,7 +6,7 @@ export function Input({
   inputId,
   formRegister,
   formHook,
-}: IInput) {
+}: IInputProps) {
   return (
     <input
       id={inputId}

@@ -1,7 +1,7 @@
 import { SubmitButton } from '../../atoms/SubmitButton';
-import { IButton } from '../../types';
+import { IButtonProps } from '../../types';
 
-export function FormButton({ content, onClick }: IButton) {
+export function FormButton({ content, onClick }: IButtonProps) {
   return (
     <SubmitButton
       onClick={onClick}

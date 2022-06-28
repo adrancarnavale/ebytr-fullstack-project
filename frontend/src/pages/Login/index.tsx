@@ -1,5 +1,5 @@
-import { LoginHeader } from '../../components/templates/LoginHeader';
-import { LoginForm } from '../../components/templates/LoginForm';
+import { LoginHeader } from '../../components/organisms/LoginHeader';
+import { LoginForm } from '../../components/organisms/LoginForm';
 
 export function Login() {
   return (

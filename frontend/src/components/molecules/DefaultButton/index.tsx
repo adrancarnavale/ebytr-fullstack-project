@@ -1,7 +1,7 @@
 import { Button } from '../../atoms/Button';
-import { IButton } from '../../types';
+import { IButtonProps } from '../../types';
 
-export function DefaultButton({ content, onClick }: IButton) {
+export function DefaultButton({ content, onClick }: IButtonProps) {
   return (
     <Button
       onClick={onClick}

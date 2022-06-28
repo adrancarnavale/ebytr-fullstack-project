@@ -5,6 +5,7 @@ import { GetByUserRepository } from './GetByUserRepository';
 export class GetByUserImplementation implements GetByUserRepository {
   async getByUser(userId: string, order: string): Promise<ITask[]> {
     const prisma = new PrismaClient();
+
     const tasks = await prisma.task.findMany({
       where: {
         authorId: userId,

@@ -1,5 +1,5 @@
-import { RegistrationForm } from '../../components/templates/RegistrationForm';
-import { RegistrationHeader } from '../../components/templates/RegistrationHeader';
+import { RegistrationForm } from '../../components/organisms/RegistrationForm';
+import { RegistrationHeader } from '../../components/organisms/RegistrationHeader';
 
 export function Registration() {
   return (

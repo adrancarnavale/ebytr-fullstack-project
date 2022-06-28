@@ -1,6 +1,6 @@
-import { IHeader } from '../../types';
+import { IHeaderProps } from '../../types';
 
-export function Header({ content, className }: IHeader) {
+export function Header({ content, className }: IHeaderProps) {
   return (
     <div>
       <h1 className={className}>{content}</h1>

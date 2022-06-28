@@ -1,7 +1,7 @@
 import { Paragraph } from '../../atoms/Paragraph';
-import { IParagraph } from '../../types';
+import { IParagraphProps } from '../../types';
 
-export function ErrorParagraph({ content }: IParagraph) {
+export function ErrorParagraph({ content }: IParagraphProps) {
   return (
     <Paragraph
       className="text-sm text-nord-aurora-1 text-center mt-[-1.5vh]"

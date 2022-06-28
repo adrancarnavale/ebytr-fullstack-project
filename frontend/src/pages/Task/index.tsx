@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { Disclosure } from '@headlessui/react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { getTasksFromUser } from '../../app/reducers/TaskSlice';
-import { TaskHeader } from '../../components/templates/TaskHeader';
+import { TaskHeader } from '../../components/organisms/TaskHeader';
 import { getStorage } from '../../utils/storage/getStorage';
-import { TaskContent } from '../../components/templates/TaskContent';
+import { TaskContent } from '../../components/organisms/TaskContent';
 
 export function Tasks() {
   const dispatch = useAppDispatch();

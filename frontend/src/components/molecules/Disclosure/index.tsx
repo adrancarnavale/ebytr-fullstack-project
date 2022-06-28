@@ -3,6 +3,7 @@ import { useCallback } from 'react';
 import { ArrowsOutSimple } from 'phosphor-react';
 import { IDisclosureProps, TStatus } from '../../types';
 import { Paragraph } from '../../atoms/Paragraph';
+import { Container } from '../../atoms/Container';
 
 const done = 'bg-nord-aurora-4';
 const progress = 'bg-nord-aurora-3';
@@ -39,13 +40,13 @@ export function DisclosureElement({
   return (
     <Disclosure>
       <Disclosure.Button className={memoizedGetStyle}>
-        <div className="flex flex-row justify-between items-center">
+        <Container className="flex flex-row justify-between items-center">
           {title}
-          <div className="flex flex-row items-center">
+          <Container className="flex flex-row items-center">
             <Paragraph className="text-sm" content={created.split('T')[0]} />
             <ArrowsOutSimple className="w-[5vh] h-[5vw] text-nord-dark-1" />
-          </div>
-        </div>
+          </Container>
+        </Container>
       </Disclosure.Button>
 
       <Disclosure.Panel className="bg-nord-dark-3 p-2 rounded-md text-nord-light-1 w-[70vw] text-center">

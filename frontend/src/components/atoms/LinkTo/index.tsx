@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { ILinkTo } from '../../types';
+import { ILinkProps } from '../../types';
 
-export function LinkTo({ target, children }: ILinkTo) {
+export function LinkTo({ target, children }: ILinkProps) {
   return <Link to={target}>{children}</Link>;
 }

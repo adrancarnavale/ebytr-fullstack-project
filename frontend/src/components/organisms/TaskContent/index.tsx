@@ -1,10 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
+import { ContentContainer } from '../../molecules/ContentContainer';
 import { DisclosureElement } from '../../molecules/Disclosure';
-import { ITask, ITaskContent } from '../../types';
+import { ITask, ITaskContentProps } from '../../types';
 
-export function TaskContent({ elements }: ITaskContent) {
+export function TaskContent({ elements }: ITaskContentProps) {
   return (
-    <div className="w-[90%] max-w-[600px] m-auto p-1 bg-nord-dark-2 flex flex-col justify-center items-center mt-[2vh] rounded-md">
+    <ContentContainer>
       {elements.map((element: ITask) => (
         <DisclosureElement
           key={uuidv4()}
@@ -14,6 +15,6 @@ export function TaskContent({ elements }: ITaskContent) {
           content={element.description as string}
         />
       ))}
-    </div>
+    </ContentContainer>
   );
 }

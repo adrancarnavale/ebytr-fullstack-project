@@ -2,9 +2,9 @@ import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useAppDispatch } from '../../../app/hooks';
 import { createUser, logInUser } from '../../../app/reducers/registerSlice';
-import { IFormContainer, IUserInfos } from '../../types';
+import { IFormContainerProps, IUserInfos } from '../../types';
 
-export function FormContainer({ children, eventTrigger }: IFormContainer) {
+export function FormContainer({ children, eventTrigger }: IFormContainerProps) {
   const dispatch = useAppDispatch();
   const formHook = useForm<IUserInfos>();
 

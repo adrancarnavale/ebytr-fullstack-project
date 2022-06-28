@@ -1,5 +1,5 @@
-import { IImage } from '../../types';
+import { IImageProps } from '../../types';
 
-export function Image({ source, className, alt }: IImage) {
+export function Image({ source, className, alt }: IImageProps) {
   return <img src={source} className={className} alt={alt} />;
 }
