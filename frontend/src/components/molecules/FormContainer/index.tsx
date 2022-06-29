@@ -2,15 +2,20 @@ import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useAppDispatch } from '../../../app/hooks';
 import { createUser, logInUser } from '../../../app/reducers/registerSlice';
-import { IFormContainerProps, IUserInfos } from '../../types';
+import { addNewTask } from '../../../app/reducers/TaskSlice';
+import { IFormContainerProps, IFormInfos, ITask } from '../../types';
 
 export function FormContainer({ children, eventTrigger }: IFormContainerProps) {
   const dispatch = useAppDispatch();
-  const formHook = useForm<IUserInfos>();
+  const formHook = useForm<IFormInfos>();
 
-  const onSubmit: SubmitHandler<IUserInfos> = (data: IUserInfos) => {
+  const onSubmit: SubmitHandler<IFormInfos> = (data) => {
     if (eventTrigger === 'register') {
       dispatch(createUser(data));
+      return;
+    }
+    if (eventTrigger === 'createTask') {
+      dispatch(addNewTask(data as ITask));
       return;
     }
     dispatch(logInUser(data));

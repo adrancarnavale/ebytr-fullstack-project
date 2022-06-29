@@ -34,6 +34,8 @@ export interface ErrorData {
 
 export interface TaskState {
   tasks: Task[];
+  isCreated: boolean;
+  areTasksLoaded: boolean;
   isFetching: boolean;
   order: 'createdAt' | 'status' | 'title';
   error: {

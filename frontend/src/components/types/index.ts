@@ -6,8 +6,13 @@ export interface IInputProps {
   type: string;
   inputId: string;
   content?: string;
-  formHook?: UseFormReturn<IUserInfos, object>;
-  formRegister: keyof IUserInfos;
+  formHook?: UseFormReturn<IFormInfos, object>;
+  formRegister: keyof IFormInfos;
+}
+
+export interface IRadioGroupProps {
+  formHook?: UseFormReturn<ITask, object>;
+  formRegister: keyof IFormInfos;
 }
 
 export interface IContainerProps {
@@ -53,7 +58,7 @@ export interface IParagraphProps {
 
 export interface IFormContainerProps {
   children: ReactNode;
-  eventTrigger: 'login' | 'register';
+  eventTrigger: 'login' | 'register' | 'createTask';
 }
 
 export interface IUserInfos {
@@ -61,6 +66,19 @@ export interface IUserInfos {
   lastName: string;
   email: string;
   password: string;
+}
+
+export interface IFormInfos {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  id?: string;
+  authorId?: string;
+  title: string;
+  description: string | null;
+  status: TStatus;
+  createdAt: string;
 }
 
 export interface IHeaderTitleProps {

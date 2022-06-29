@@ -3,7 +3,7 @@ import { IContainerProps } from '../../types';
 
 export function ContentContainer({ children }: IContainerProps) {
   return (
-    <Container className="flex m-auto mt-[4vh] flex-col justify-center items-center bg-nord-dark-2 p-[4vh] rounded-md w-[90vw] max-w-lg max-h-screen">
+    <Container className="flex m-auto mt-[2vh] flex-col justify-center items-center bg-nord-dark-2 p-[3vh] rounded-md w-[90vw] max-w-lg mb-2">
       {children}
     </Container>
   );

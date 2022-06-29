@@ -7,7 +7,9 @@ import { ErrorData, Task, TaskState } from './types';
 const initialState: TaskState = {
   tasks: [],
   order: 'createdAt',
+  isCreated: false,
   isFetching: false,
+  areTasksLoaded: false,
   error: {
     message: '',
     status: 0,
@@ -148,6 +150,7 @@ export const taskSlice = createSlice({
     builder.addCase(getTasksFromUser.fulfilled, (state, action) => {
       state.isFetching = false;
       state.tasks = [...action.payload];
+      state.areTasksLoaded = true;
     });
     builder.addCase(getTasksFromUser.rejected, (state, action) => {
       state.isFetching = false;
@@ -156,14 +159,17 @@ export const taskSlice = createSlice({
     });
 
     builder.addCase(addNewTask.pending, (state, _action) => {
+      state.areTasksLoaded = false;
       state.isFetching = true;
     });
     builder.addCase(addNewTask.fulfilled, (state, action) => {
       state.isFetching = false;
       state.tasks = [...state.tasks, action.payload];
+      state.isCreated = true;
     });
     builder.addCase(addNewTask.rejected, (state, action) => {
       state.isFetching = false;
+
       state.error.message = action.payload?.message as string;
       state.error.status = action.payload?.status as number;
     });

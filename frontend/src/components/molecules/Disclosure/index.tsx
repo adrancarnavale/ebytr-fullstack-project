@@ -38,6 +38,8 @@ export function DisclosureElement({
 
   const memoizedSerializeDate = useCallback(
     (createdAt: string) => {
+      console.log(createdAt);
+
       const [year, month, day] = createdAt.split('T')[0].split('-');
       return [day, month, year].join('/');
     },
@@ -46,7 +48,7 @@ export function DisclosureElement({
 
   return (
     <Disclosure>
-      <Disclosure.Button className="my-[1vh] p-[1vh] bg-nord-dark-3 rounded-md text-nord-light-1 shadow-sm w-[80vw] max-w-[90%] border border-nord-dark-2 hover:bg-nord-dark-4 hover:border-nord-dark-2 hover:shadow-lg focus:ring-2 focus:ring-nord-aurora-4 focus:outline-none">
+      <Disclosure.Button className="my-[1vh] p-[1.5vh] bg-nord-dark-3 rounded-md text-nord-light-1 shadow-sm w-[80vw] max-w-[90%] border border-nord-dark-2 hover:bg-nord-dark-4 hover:border-nord-dark-2 hover:shadow-lg focus:ring-2 focus:ring-nord-aurora-4 focus:outline-none">
         <Container className="flex flex-row justify-between items-center max-h-[5vh]">
           <Container>
             {title}
