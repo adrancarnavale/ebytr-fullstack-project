@@ -13,6 +13,7 @@ export function TaskContent({ elements }: ITaskContentProps) {
           title={element.title}
           created={element.createdAt}
           content={element.description as string}
+          taskId={element.id as string}
         />
       ))}
     </ContentContainer>

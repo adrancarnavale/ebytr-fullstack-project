@@ -113,7 +113,6 @@ export const registerSlice = createSlice({
       setStorage('id', action.payload.id);
     });
     builder.addCase(logInUser.rejected, (state, action) => {
-      console.log(action.payload);
       state.isFetching = false;
       state.error.message = action.payload?.message as string;
       state.error.status = action.payload?.status as number;

@@ -4,20 +4,27 @@ import { ArrowsOutSimple } from 'phosphor-react';
 import { IDisclosureProps, TStatus } from '../../types';
 import { Paragraph } from '../../atoms/Paragraph';
 import { Container } from '../../atoms/Container';
+import { destroyTask } from '../../../app/reducers/TaskSlice';
+import { Button } from '../../atoms/Button';
+import { useAppDispatch } from '../../../app/hooks';
 
 const done = 'text-nord-aurora-4';
 const progress = 'text-nord-aurora-3';
 const pending = 'text-nord-aurora-1';
 const def = 'text-nord-dark-1';
 
-const style = 'w-[4vh] h-[4vw] p-1 w-full h-full';
+const style =
+  'w-9 h-9 md:w-[5vh] md:h-[5vw] lg:w-[5vh] lg:h-[5vw] p-1 w-full h-full';
 
 export function DisclosureElement({
+  taskId,
   title,
   content,
   status,
   created,
 }: IDisclosureProps) {
+  const dispatch = useAppDispatch();
+
   const getStyle = (taskStatus: TStatus) => {
     switch (taskStatus) {
       case 'done':
@@ -38,8 +45,6 @@ export function DisclosureElement({
 
   const memoizedSerializeDate = useCallback(
     (createdAt: string) => {
-      console.log(createdAt);
-
       const [year, month, day] = createdAt.split('T')[0].split('-');
       return [day, month, year].join('/');
     },
@@ -50,7 +55,7 @@ export function DisclosureElement({
     <Disclosure>
       <Disclosure.Button className="my-[1vh] p-[1.5vh] bg-nord-dark-3 rounded-md text-nord-light-1 shadow-sm w-[80vw] max-w-[90%] border border-nord-dark-2 hover:bg-nord-dark-4 hover:border-nord-dark-2 hover:shadow-lg focus:ring-2 focus:ring-nord-aurora-4 focus:outline-none">
         <Container className="flex flex-row justify-between items-center max-h-[5vh]">
-          <Container>
+          <Container className="flex flex-col items-start">
             {title}
             <Paragraph
               className="text-xs"
@@ -65,7 +70,20 @@ export function DisclosureElement({
       </Disclosure.Button>
 
       <Disclosure.Panel className="bg-nord-dark-3 p-2 rounded-md text-nord-light-1 w-[70vw] text-center max-w-[90%] focus:ring-2 focus:ring-nord-aurora-4 focus:outline-none">
-        {content}
+        <Container className="w-full">
+          <Container className="flex flex-row justify-between w-full mt-0">
+            <Button
+              content="edit"
+              className="bg-nord-dark-4 h-[4vh] m-auto w-[30%] rounded-md mb-[1vh] text-nord-light-1 hover:bg-nord-dark-3 shadow-sm hover:shadow-lg focus:ring-2 focus:ring-nord-aurora-4 focus:outline-none mt-1 ml-4"
+            />
+            <Button
+              content="delete"
+              onClick={() => dispatch(destroyTask(taskId))}
+              className="bg-nord-dark-4 h-[4vh] m-auto w-[30%] rounded-md mb-[1vh] text-nord-light-1 hover:bg-nord-dark-3 shadow-sm hover:shadow-lg focus:ring-2 focus:ring-nord-aurora-4 focus:outline-none mt-1 mr-4"
+            />
+          </Container>
+          {content}
+        </Container>
       </Disclosure.Panel>
     </Disclosure>
   );

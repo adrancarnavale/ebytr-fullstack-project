@@ -33,8 +33,6 @@ export function Tasks() {
               onClick={() => navigate('/create')}
               content="Create"
             />
-            <DefaultButton content="Edit" />
-            <DefaultButton content="Delete" />
           </Container>
           <TaskContent elements={tasks} />
         </>

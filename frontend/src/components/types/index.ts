@@ -91,6 +91,7 @@ export interface ITextLinkProps {
 }
 
 export interface IDisclosureProps {
+  taskId: string;
   title: string;
   content: string;
   status: 'done' | 'pending' | 'in progress';
