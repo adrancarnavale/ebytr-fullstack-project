@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { getTasksFromUser } from '../../app/reducers/TaskSlice';
+import { getTasksFromUser } from '../../app/reducers/taskSlice';
 import { TaskHeader } from '../../components/organisms/TaskHeader';
 import { getStorage } from '../../utils/storage/getStorage';
 import { TaskContent } from '../../components/organisms/TaskContent';

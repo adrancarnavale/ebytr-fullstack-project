@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Container } from '../../atoms/Container';
 import { ContentContainer } from '../../molecules/ContentContainer';
 import { useAppDispatch } from '../../../app/hooks';
-import { getTasksFromUser, updateOrder } from '../../../app/reducers/TaskSlice';
+import { getTasksFromUser, updateOrder } from '../../../app/reducers/taskSlice';
 import { getStorage } from '../../../utils/storage/getStorage';
 
 export function TaskOptions() {

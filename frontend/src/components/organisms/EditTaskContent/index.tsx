@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
-import { saveTaskBeingEditted } from '../../../app/reducers/TaskSlice';
+import { saveTaskBeingEditted } from '../../../app/reducers/taskSlice';
 import { Container } from '../../atoms/Container';
 import { DefaultButton } from '../../molecules/DefaultButton';
 import { ErrorParagraph } from '../../molecules/ErrorParagraph';

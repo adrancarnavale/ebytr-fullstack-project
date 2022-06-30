@@ -2,7 +2,7 @@ import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { createUser, logInUser } from '../../../app/reducers/registerSlice';
-import { addNewTask, updateTask } from '../../../app/reducers/TaskSlice';
+import { addNewTask, updateTask } from '../../../app/reducers/taskSlice';
 import { IFormContainerProps, IFormInfos, ITask } from './types';
 
 export function FormContainer({ children, eventTrigger }: IFormContainerProps) {

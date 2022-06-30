@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { IDisclosureProps, TStatus } from './types';
 import { Paragraph } from '../../atoms/Paragraph';
 import { Container } from '../../atoms/Container';
-import { destroyTask } from '../../../app/reducers/TaskSlice';
+import { destroyTask } from '../../../app/reducers/taskSlice';
 import { Button } from '../../atoms/Button';
 import { useAppDispatch } from '../../../app/hooks';
 
