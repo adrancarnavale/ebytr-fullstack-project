@@ -1,6 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import registerReducer from './registerSlice';
-import taskReducer from './TaskSlice';
+import taskReducer from './taskSlice';
 
 export const rootReducer = combineReducers({
   register: registerReducer,

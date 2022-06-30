@@ -1,4 +1,4 @@
-import { IButtonProps } from '../../types';
+import { IButtonProps } from './types';
 
 export function Button({ content, onClick, className, name }: IButtonProps) {
   return (

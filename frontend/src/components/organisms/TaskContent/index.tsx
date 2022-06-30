@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Paragraph } from '../../atoms/Paragraph';
 import { ContentContainer } from '../../molecules/ContentContainer';
 import { DisclosureElement } from '../../molecules/Disclosure';
-import { ITask, ITaskContentProps } from '../../types';
+import { ITask, ITaskContentProps } from './types';
 
 export function TaskContent({ elements }: ITaskContentProps) {
   return (

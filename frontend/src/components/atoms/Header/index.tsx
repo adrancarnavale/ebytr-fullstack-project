@@ -1,4 +1,4 @@
-import { IHeaderProps } from '../../types';
+import { IHeaderProps } from './types';
 
 export function Header({ content, className }: IHeaderProps) {
   return (

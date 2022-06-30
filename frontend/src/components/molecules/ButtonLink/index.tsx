@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { IButtonProps } from '../../types';
+import { IButtonProps } from './types';
 import { DefaultButton } from '../DefaultButton';
 
 export function ButtonLink({ target, content }: IButtonProps) {

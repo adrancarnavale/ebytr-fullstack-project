@@ -1,9 +1,4 @@
-interface ErrorResponse {
-  data: {
-    message: string;
-  };
-  status: number;
-}
+import { ErrorResponse } from './types';
 
 export class CustomError extends Error {
   public status: number;

@@ -4,7 +4,6 @@ import { FormContainer } from '../../molecules/FormContainer';
 import { UserInput } from '../../molecules/UserInput';
 import { useAppSelector } from '../../../app/hooks';
 import { ErrorParagraph } from '../../molecules/ErrorParagraph';
-import { DefaultButton } from '../../molecules/DefaultButton';
 import { ButtonLink } from '../../molecules/ButtonLink';
 
 export function RegistrationForm() {

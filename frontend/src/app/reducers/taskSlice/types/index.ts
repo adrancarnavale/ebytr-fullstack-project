@@ -1,40 +1,11 @@
-export interface RegisterState {
-  token: string;
-  id: string;
-  isFetching: boolean;
-  isRegistered: boolean;
-  isLogged: boolean;
-  error: {
-    message: string;
-    status: number;
-  };
-}
-
-export interface UserInfos {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
+export interface ErrorData {
+  status: number;
+  message: string;
 }
 
 export interface IGetTasksFromUserParams {
   userId: string;
   order: string;
-}
-
-export interface LoginInfos {
-  email: string;
-  password: string;
-}
-
-export interface LoginReturnInfos {
-  token: string;
-  id: string;
-}
-
-export interface ErrorData {
-  status: number;
-  message: string;
 }
 
 export interface TaskState {

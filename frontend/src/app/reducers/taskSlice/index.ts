@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { api } from '../../utils/api';
-import { CustomError } from '../../utils/CustomError';
-import { getStorage } from '../../utils/storage/getStorage';
+import { api } from '../../../utils/api';
+import { CustomError } from '../../../utils/CustomError/CustomError';
+import { getStorage } from '../../../utils/storage/getStorage';
 import { ErrorData, IGetTasksFromUserParams, Task, TaskState } from './types';
 
 const initialState: TaskState = {
@@ -23,8 +23,6 @@ export const getTasksFromUser = createAsyncThunk<
   { rejectValue: ErrorData }
 >('task/getFromUser', async (getTasksInfos, thunkApi) => {
   try {
-    console.log(getTasksInfos.order);
-
     const config = {
       headers: {
         authorization: getStorage('token'),

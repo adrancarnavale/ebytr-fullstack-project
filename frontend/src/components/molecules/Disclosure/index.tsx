@@ -2,7 +2,7 @@ import { Disclosure } from '@headlessui/react';
 import { useCallback } from 'react';
 import { ArrowsOutSimple } from 'phosphor-react';
 import { useNavigate } from 'react-router-dom';
-import { IDisclosureProps, TStatus } from '../../types';
+import { IDisclosureProps, TStatus } from './types';
 import { Paragraph } from '../../atoms/Paragraph';
 import { Container } from '../../atoms/Container';
 import { destroyTask } from '../../../app/reducers/TaskSlice';

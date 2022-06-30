@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { createUser, logInUser } from '../../../app/reducers/registerSlice';
 import { addNewTask, updateTask } from '../../../app/reducers/TaskSlice';
-import { IFormContainerProps, IFormInfos, ITask } from '../../types';
+import { IFormContainerProps, IFormInfos, ITask } from './types';
 
 export function FormContainer({ children, eventTrigger }: IFormContainerProps) {
   const dispatch = useAppDispatch();

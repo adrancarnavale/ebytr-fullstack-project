@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { api } from '../../utils/api';
-import { CustomError } from '../../utils/CustomError';
-import { setStorage } from '../../utils/storage/setStorage';
+import { api } from '../../../utils/api';
+import { CustomError } from '../../../utils/CustomError/CustomError';
+import { setStorage } from '../../../utils/storage/setStorage';
 import {
   ErrorData,
   LoginInfos,
@@ -28,14 +28,11 @@ export const createUser = createAsyncThunk<
   { rejectValue: ErrorData }
 >('user/createUser', async (userInfos, thunkApi) => {
   try {
-    const { data: response } = await api.post<LoginReturnInfos>(
-      '/user/register',
-      {
-        ...userInfos,
-      }
-    );
+    const { data } = await api.post<LoginReturnInfos>('/user/register', {
+      ...userInfos,
+    });
 
-    return response;
+    return data;
   } catch (error) {
     const { status, message } = new CustomError(
       (error as CustomError).response

@@ -1,6 +1,6 @@
 import { Label } from '../../atoms/Label';
 import { Input } from '../../atoms/Input';
-import { IInputProps } from '../../types';
+import { IInputProps } from './types';
 import { Container } from '../../atoms/Container';
 
 export function UserInput({

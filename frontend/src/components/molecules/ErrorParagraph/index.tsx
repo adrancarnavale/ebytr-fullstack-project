@@ -1,5 +1,5 @@
 import { Paragraph } from '../../atoms/Paragraph';
-import { IParagraphProps } from '../../types';
+import { IParagraphProps } from './types';
 
 export function ErrorParagraph({ content }: IParagraphProps) {
   return (

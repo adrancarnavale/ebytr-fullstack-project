@@ -1,4 +1,4 @@
-import { ILabelProps } from '../../types';
+import { ILabelProps } from './types';
 
 export function Label({ inputId, children, content, className }: ILabelProps) {
   return (
