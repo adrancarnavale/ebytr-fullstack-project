@@ -7,7 +7,7 @@ export class LoginController {
   constructor(private useCase: LoginUseCase) {}
 
   async handle(request: Request, response: Response) {
-    try {
+    try {      
       const { body: userInfos } = request;
 
       const userLoginResponse = await this.useCase.execute(userInfos);

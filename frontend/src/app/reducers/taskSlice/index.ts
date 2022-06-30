@@ -150,6 +150,10 @@ export const taskSlice = createSlice({
     updateOrder: (state, action) => {
       state.order = action.payload;
     },
+    resetErrorsFromTask: (state) => {
+      state.error.message = '';
+      state.error.status = 0;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getTasksFromUser.pending, (state, _action) => {
@@ -213,6 +217,7 @@ export const taskSlice = createSlice({
   },
 });
 
-export const { saveTaskBeingEditted, updateOrder } = taskSlice.actions;
+export const { saveTaskBeingEditted, updateOrder, resetErrorsFromTask } =
+  taskSlice.actions;
 
 export default taskSlice.reducer;

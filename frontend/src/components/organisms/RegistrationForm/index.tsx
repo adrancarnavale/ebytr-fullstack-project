@@ -1,18 +1,27 @@
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { FormButton } from '../../molecules/FormButton';
 import { FormContainer } from '../../molecules/FormContainer';
 import { UserInput } from '../../molecules/UserInput';
-import { useAppSelector } from '../../../app/hooks';
+import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 import { ErrorParagraph } from '../../molecules/ErrorParagraph';
 import { ButtonLink } from '../../molecules/ButtonLink';
+import { resetErrorsFromRegister } from '../../../app/reducers/registerSlice';
+import * as errors from './constants';
 
 export function RegistrationForm() {
+  const dispatch = useAppDispatch();
+
   const {
     register: {
       error: { message },
       isRegistered,
     },
   } = useAppSelector((state) => state);
+
+  useEffect(() => {
+    dispatch(resetErrorsFromRegister());
+  }, []);
 
   return (
     <FormContainer eventTrigger="register">
@@ -23,21 +32,27 @@ export function RegistrationForm() {
         type="text"
         formRegister="firstName"
       />
-      {message.includes('first name') && <ErrorParagraph content={message} />}
+      {(message === errors.FIRST_NAME_EMPTY ||
+        message === errors.FIRST_NAME_MIN) && (
+        <ErrorParagraph content={message} />
+      )}
       <UserInput
         inputId="lastNameInput"
         content="Enter your last name: "
         type="text"
         formRegister="lastName"
       />
-      {message.includes('last name') && <ErrorParagraph content={message} />}
+      {(message === errors.LAST_NAME_EMPTY ||
+        message === errors.LAST_NAME_MIN) && (
+        <ErrorParagraph content={message} />
+      )}
       <UserInput
         inputId="emailInput"
         content="Enter your e-mail: "
         type="text"
         formRegister="email"
       />
-      {message.includes('email address') && (
+      {(message === errors.EMAIL_EMPTY || message === errors.INVALID_EMAIL) && (
         <ErrorParagraph content={message} />
       )}
       <UserInput
@@ -46,7 +61,9 @@ export function RegistrationForm() {
         type="password"
         formRegister="password"
       />
-      {message.includes('password') && <ErrorParagraph content={message} />}
+      {(message === errors.PASS_EMPTY || message === errors.INVALID_PASS) && (
+        <ErrorParagraph content={message} />
+      )}
       <FormButton content="Submit" />
       <ButtonLink target="/" content="Back" />
     </FormContainer>

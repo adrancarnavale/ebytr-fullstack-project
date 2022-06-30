@@ -4,10 +4,14 @@ import { FormButton } from '../../molecules/FormButton';
 import { FormContainer } from '../../molecules/FormContainer';
 import { TextLink } from '../../molecules/TextLink';
 import { UserInput } from '../../molecules/UserInput';
-import { resetRegistrationStatus } from '../../../app/reducers/registerSlice';
+import {
+  resetErrorsFromRegister,
+  resetRegistrationStatus,
+} from '../../../app/reducers/registerSlice';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { SuccessParagraph } from '../../molecules/SuccessParagraph';
 import { ErrorParagraph } from '../../molecules/ErrorParagraph';
+import * as errors from './constants';
 
 export function LoginForm() {
   const ONE_AND_HALF_SECOND = 1500;
@@ -26,6 +30,7 @@ export function LoginForm() {
     setTimeout(() => {
       dispatch(resetRegistrationStatus());
     }, ONE_AND_HALF_SECOND);
+    dispatch(resetErrorsFromRegister());
   }, []);
 
   return (
@@ -34,22 +39,26 @@ export function LoginForm() {
       <UserInput
         inputId="emailInput"
         content="Enter your e-mail: "
-        type="email"
+        type="text"
         formRegister="email"
       />
-      {message.includes('email') && <ErrorParagraph content={message} />}
+      {(message === errors.EMAIL_EMPTY || message === errors.INVALID_EMAIL) && (
+        <ErrorParagraph content={message} />
+      )}
       <UserInput
         inputId="passwordInput"
         content="Enter your password: "
         type="password"
         formRegister="password"
       />
-      {message.includes('password') && <ErrorParagraph content={message} />}
+      {(message === errors.EMAIL_EMPTY || message === errors.INVALID_EMAIL) && (
+        <ErrorParagraph content={message} />
+      )}
       <FormButton content="Log In" />
       {isRegistered && (
         <SuccessParagraph content="You have been successfully registered" />
       )}
-      {message.includes('not found') && <ErrorParagraph content={message} />}
+      {message === errors.INVALID_DATA && <ErrorParagraph content={message} />}
       {!isRegistered && (
         <TextLink
           target="/register"

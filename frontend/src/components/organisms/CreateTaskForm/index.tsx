@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../../../app/hooks';
+import { useAppSelector, useAppDispatch } from '../../../app/hooks';
+import { resetErrorsFromTask } from '../../../app/reducers/taskSlice';
 import { Container } from '../../atoms/Container';
 import { DefaultButton } from '../../molecules/DefaultButton';
 import { ErrorParagraph } from '../../molecules/ErrorParagraph';
@@ -7,9 +9,16 @@ import { FormButton } from '../../molecules/FormButton';
 import { FormContainer } from '../../molecules/FormContainer';
 import { RadioGroupElement } from '../../molecules/RadioGroup';
 import { UserInput } from '../../molecules/UserInput';
+import * as errors from './constants';
 
 export function CreateTaskForm() {
   const navigate = useNavigate();
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(resetErrorsFromTask());
+  }, []);
 
   const {
     task: {
@@ -25,17 +34,18 @@ export function CreateTaskForm() {
         inputId="createTaskTitle"
         formRegister="title"
       />
-      {message.includes('title') && <ErrorParagraph content={message} />}
+      {(message === errors.EMPTY_TITLE || message === errors.TITLE_MIN) && (
+        <ErrorParagraph content={message} />
+      )}
       <UserInput
         content="Description: "
         type="text"
         inputId="createTaskDescription"
         formRegister="description"
       />
-      {message.includes('description') && <ErrorParagraph content={message} />}
       <RadioGroupElement formRegister="status" />
 
-      {message.includes('status') && <ErrorParagraph content={message} />}
+      {message === errors.EMPTY_STATUS && <ErrorParagraph content={message} />}
 
       <Container className="flex flex-row justify-center items-center w-full">
         <FormButton content="Submit" />

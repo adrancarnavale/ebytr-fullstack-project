@@ -33,7 +33,7 @@ export class LoginImplementation implements LoginRepository {
       );
 
     const token = generateToken(userInfos);
-    const id = userInfos.id as string;
+    const id = foundUser.id;
 
     const userLoginResponse = {
       token,
