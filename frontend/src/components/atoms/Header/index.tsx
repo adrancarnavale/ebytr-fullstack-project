@@ -1,5 +1,9 @@
-import { Header } from './types';
+import { IHeaderProps } from './types';
 
-export function Header({ content, className }: Header) {
-  return <h1 className={className}>{content}</h1>;
+export function Header({ content, className }: IHeaderProps) {
+  return (
+    <div>
+      <h1 className={className}>{content}</h1>
+    </div>
+  );
 }

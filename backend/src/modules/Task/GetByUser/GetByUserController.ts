@@ -10,13 +10,11 @@ export class GetByUserController {
   async handle(request: Request, response: Response) {
     try {
       const { id: userId } = request.params;
-      const { sortOrder } = request.query;
-      const sortedTasks = await this.useCase.execute(
-        userId,
-        sortOrder as SortOrder
-      );
 
-      return response.status(StatusCodes.OK).json(sortedTasks);
+      const { order } = request.query;
+      const tasks = await this.useCase.execute(userId, order as SortOrder);
+
+      return response.status(StatusCodes.OK).json(tasks);
     } catch (error) {
       return response
         .status((error as CustomError).status)

@@ -6,7 +6,8 @@ import { GetByUserRepository } from './GetByUserRepository';
 export class GetByUserImplementation implements GetByUserRepository {
   async getByUser(userId: string, sortOrder: SortOrder): Promise<ITask[]> {
     const prisma = new PrismaClient();
-    const sortedTasks = await prisma.task.findMany({
+
+    const tasks = await prisma.task.findMany({
       where: {
         authorId: userId,
       },
@@ -27,6 +28,6 @@ export class GetByUserImplementation implements GetByUserRepository {
       ],
     });
 
-    return sortedTasks;
+    return tasks;
   }
 }

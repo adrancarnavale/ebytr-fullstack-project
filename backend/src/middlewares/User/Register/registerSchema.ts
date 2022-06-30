@@ -8,15 +8,18 @@ export const registerSchema = Joi.object({
     'string.min': 'Your first name must have at least two characters',
     'string.max': 'Your first name must have at least three characters',
     'any.required': 'Your first name must not be empty',
+    'string.empty': 'Your first name must not be empty',
   }),
   lastName: Joi.string().min(2).max(30).required().messages({
     'string.min': 'Your last name must have at least two characters',
     'string.max': 'Your last name must have at least three characters',
     'any.required': 'Your last name must not be empty',
+    'string.empty': 'Your last name must not be empty',
   }),
   email: Joi.string().email().required().messages({
     'string.email': 'Please enter a valid email address',
     'any.required': 'Your email must not be empty',
+    'string.empty': 'Your email must not be empty',
   }),
   password: Joi.string()
     .pattern(REGEX, {
@@ -27,5 +30,6 @@ export const registerSchema = Joi.object({
       'string.pattern.name':
         'Your password must have at least eight characters, one uppercase letter, and one number',
       'any.required': 'Your password must not be empty',
+      'string.empty': 'Your password must not be empty',
     }),
 });

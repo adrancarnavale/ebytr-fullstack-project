@@ -15,7 +15,7 @@ taskRoutes
   .post('/create', tokenValidation, taskValidation, async (request, response) =>
     create.handle(request, response)
   )
-  .post('/edit', tokenValidation, taskValidation, async (request, response) =>
+  .patch('/edit', tokenValidation, taskValidation, async (request, response) =>
     edit.handle(request, response)
   )
   .delete('/destroy/:id', tokenValidation, async (request, response) =>
