@@ -1,6 +1,7 @@
 import { Disclosure } from '@headlessui/react';
 import { useCallback } from 'react';
 import { ArrowsOutSimple } from 'phosphor-react';
+import { useNavigate } from 'react-router-dom';
 import { IDisclosureProps, TStatus } from '../../types';
 import { Paragraph } from '../../atoms/Paragraph';
 import { Container } from '../../atoms/Container';
@@ -14,7 +15,7 @@ const pending = 'text-nord-aurora-1';
 const def = 'text-nord-dark-1';
 
 const style =
-  'w-9 h-9 md:w-[5vh] md:h-[5vw] lg:w-[5vh] lg:h-[5vw] p-1 w-full h-full';
+  'w-10 h-10 md:w-[5vh] md:h-[5vw] lg:w-[5vh] lg:h-[5vw] p-1 w-full h-full';
 
 export function DisclosureElement({
   taskId,
@@ -24,6 +25,8 @@ export function DisclosureElement({
   created,
 }: IDisclosureProps) {
   const dispatch = useAppDispatch();
+
+  const navigate = useNavigate();
 
   const getStyle = (taskStatus: TStatus) => {
     switch (taskStatus) {
@@ -73,7 +76,9 @@ export function DisclosureElement({
         <Container className="w-full">
           <Container className="flex flex-row justify-between w-full mt-0">
             <Button
+              name={taskId}
               content="edit"
+              onClick={() => navigate(`/edit/${taskId}`)}
               className="bg-nord-dark-4 h-[4vh] m-auto w-[30%] rounded-md mb-[1vh] text-nord-light-1 hover:bg-nord-dark-3 shadow-sm hover:shadow-lg focus:ring-2 focus:ring-nord-aurora-4 focus:outline-none mt-1 ml-4"
             />
             <Button

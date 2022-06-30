@@ -1,13 +1,17 @@
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useAppDispatch } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { createUser, logInUser } from '../../../app/reducers/registerSlice';
-import { addNewTask } from '../../../app/reducers/TaskSlice';
+import { addNewTask, updateTask } from '../../../app/reducers/TaskSlice';
 import { IFormContainerProps, IFormInfos, ITask } from '../../types';
 
 export function FormContainer({ children, eventTrigger }: IFormContainerProps) {
   const dispatch = useAppDispatch();
   const formHook = useForm<IFormInfos>();
+
+  const {
+    task: { taskBeingEditted: taskId },
+  } = useAppSelector((state) => state);
 
   const onSubmit: SubmitHandler<IFormInfos> = (data) => {
     if (eventTrigger === 'register') {
@@ -16,6 +20,14 @@ export function FormContainer({ children, eventTrigger }: IFormContainerProps) {
     }
     if (eventTrigger === 'createTask') {
       dispatch(addNewTask(data as ITask));
+      return;
+    }
+    if (eventTrigger === 'editTask') {
+      const taskData = {
+        ...data,
+        id: taskId,
+      };
+      dispatch(updateTask(taskData as ITask));
       return;
     }
     dispatch(logInUser(data));

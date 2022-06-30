@@ -17,6 +17,11 @@ export interface UserInfos {
   password: string;
 }
 
+export interface IGetTasksFromUserParams {
+  userId: string;
+  order: string;
+}
+
 export interface LoginInfos {
   email: string;
   password: string;
@@ -33,6 +38,7 @@ export interface ErrorData {
 }
 
 export interface TaskState {
+  taskBeingEditted: string;
   tasks: Task[];
   isCreated: boolean;
   areTasksLoaded: boolean;

@@ -2,11 +2,12 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { api } from '../../utils/api';
 import { CustomError } from '../../utils/CustomError';
 import { getStorage } from '../../utils/storage/getStorage';
-import { ErrorData, Task, TaskState } from './types';
+import { ErrorData, IGetTasksFromUserParams, Task, TaskState } from './types';
 
 const initialState: TaskState = {
   tasks: [],
   order: 'createdAt',
+  taskBeingEditted: '',
   isCreated: false,
   isFetching: false,
   areTasksLoaded: false,
@@ -18,10 +19,12 @@ const initialState: TaskState = {
 
 export const getTasksFromUser = createAsyncThunk<
   Task[],
-  string,
+  IGetTasksFromUserParams,
   { rejectValue: ErrorData }
->('task/getFromUser', async (userId, thunkApi) => {
+>('task/getFromUser', async (getTasksInfos, thunkApi) => {
   try {
+    console.log(getTasksInfos.order);
+
     const config = {
       headers: {
         authorization: getStorage('token'),
@@ -29,7 +32,7 @@ export const getTasksFromUser = createAsyncThunk<
     };
 
     const { data: response } = await api.get(
-      `/task/getAll/${userId}?order=${initialState.order}`,
+      `/task/getAll/${getTasksInfos.userId}?order=${getTasksInfos.order}`,
       config
     );
 
@@ -142,7 +145,14 @@ export const updateTask = createAsyncThunk<
 export const taskSlice = createSlice({
   name: 'task',
   initialState,
-  reducers: {},
+  reducers: {
+    saveTaskBeingEditted: (state, action) => {
+      state.taskBeingEditted = action.payload;
+    },
+    updateOrder: (state, action) => {
+      state.order = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getTasksFromUser.pending, (state, _action) => {
       state.isFetching = true;
@@ -205,6 +215,6 @@ export const taskSlice = createSlice({
   },
 });
 
-// export const {} = taskSlice.actions;
+export const { saveTaskBeingEditted, updateOrder } = taskSlice.actions;
 
 export default taskSlice.reducer;

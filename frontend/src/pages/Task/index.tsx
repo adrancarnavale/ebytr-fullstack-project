@@ -8,6 +8,7 @@ import { TaskContent } from '../../components/organisms/TaskContent';
 import { PageContainer } from '../../components/molecules/PageContainer';
 import { DefaultButton } from '../../components/molecules/DefaultButton';
 import { Container } from '../../components/atoms/Container';
+import { TaskOptions } from '../../components/organisms/TaskOptions';
 
 export function Tasks() {
   const dispatch = useAppDispatch();
@@ -16,11 +17,16 @@ export function Tasks() {
   const userId = getStorage('id');
 
   const {
-    task: { tasks, areTasksLoaded },
+    task: { tasks, areTasksLoaded, order },
   } = useAppSelector((state) => state);
 
   useEffect(() => {
-    dispatch(getTasksFromUser(userId));
+    const getTasksInfos = {
+      order,
+      userId,
+    };
+
+    dispatch(getTasksFromUser(getTasksInfos));
   }, []);
 
   return (
@@ -31,8 +37,11 @@ export function Tasks() {
           <Container className="w-[95%] max-w-lg flex flex-row justify-center gap-2">
             <DefaultButton
               onClick={() => navigate('/create')}
-              content="Create"
+              content="Create new task"
             />
+          </Container>
+          <Container className="w-[95%] max-w-lg flex flex-row justify-center gap-2">
+            <TaskOptions />
           </Container>
           <TaskContent elements={tasks} />
         </>

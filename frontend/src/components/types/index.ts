@@ -21,6 +21,7 @@ export interface IContainerProps {
 }
 
 export interface IButtonProps {
+  name?: string;
   target?: string;
   content: string;
   onClick?: () => void;
@@ -58,7 +59,7 @@ export interface IParagraphProps {
 
 export interface IFormContainerProps {
   children: ReactNode;
-  eventTrigger: 'login' | 'register' | 'createTask';
+  eventTrigger: 'login' | 'register' | 'createTask' | 'editTask';
 }
 
 export interface IUserInfos {
@@ -88,6 +89,11 @@ export interface IHeaderTitleProps {
 export interface ITextLinkProps {
   target: string;
   content: string;
+}
+
+export interface ISpanProps {
+  content: string;
+  className?: string;
 }
 
 export interface IDisclosureProps {
