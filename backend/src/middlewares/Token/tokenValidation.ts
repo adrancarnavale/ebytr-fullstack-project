@@ -21,7 +21,7 @@ export function tokenValidation(
       data: { email, password },
     } = verifyToken(token);
 
-    request.userLoginData = {
+    request.body.userLogindata = {
       email,
       password,
     };

@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '../../../db/prisma';
 import { StatusCodes } from 'http-status-codes';
 import { ITask } from '../../../entities/ITask';
 import { CustomError } from '../../../utils/CustomError';
@@ -6,7 +6,6 @@ import { CreateRepository } from './CreateRepository';
 
 export class CreateImplementation implements CreateRepository {
   async create(task: ITask, userEmail: string): Promise<ITask> {
-    const prisma = new PrismaClient();
 
     const { title, description, status } = task;
 

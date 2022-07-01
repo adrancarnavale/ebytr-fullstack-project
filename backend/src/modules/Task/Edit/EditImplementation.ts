@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '../../../db/prisma';
 import { StatusCodes } from 'http-status-codes';
 import { ITask } from '../../../entities/ITask';
 import { CustomError } from '../../../utils/CustomError';
@@ -6,7 +6,6 @@ import { EditRepository } from './EditRepository';
 
 export class EditImplementation implements EditRepository {
   async edit(task: ITask): Promise<ITask> {
-    const prisma = new PrismaClient();
     const { id, title, description, status } = task;
 
     const target = await prisma.task.findUnique({

@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '../../../db/prisma';
 import { StatusCodes } from 'http-status-codes';
 import { IUser } from '../../../entities/IUser';
 import { CustomError } from '../../../utils/CustomError';
@@ -6,8 +6,6 @@ import { LoginRepository } from './LoginRepository';
 import bcrypt from 'bcryptjs';
 import { generateToken } from '../../../utils/token/generateToken';
 import { UserLoginResponse } from '../../../DTOs/UserLoginResponseDTO';
-
-const prisma = new PrismaClient();
 
 export class LoginImplementation implements LoginRepository {
   async login(userInfos: IUser): Promise<UserLoginResponse> {

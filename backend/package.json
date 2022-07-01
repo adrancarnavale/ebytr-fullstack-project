@@ -10,7 +10,8 @@
   "scripts": {
     "db:up": "yarn prisma migrate dev && yarn dev",
     "db:restore": "yarn prisma migrate reset && yarn dev",
-    "dev": "tsnd --respawn --transpile-only --exit-child --watch src src/server.ts"
+    "dev": "tsnd --respawn --transpile-only --exit-child --watch src src/server.ts",
+    "test": "mocha --require ts-node/register src/test/**/*.test.ts"
   },
   "keywords": [],
   "author": "",
@@ -28,8 +29,11 @@
     "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
+    "@types/jest": "^28.1.4",
     "@types/jsonwebtoken": "^8.5.8",
+    "@types/mocha": "^9.1.1",
     "@types/node": "^18.0.0",
+    "@types/sinon": "^10.0.12",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
     "bcryptjs": "^2.4.3",
@@ -40,6 +44,9 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.7.1",
     "eslint-plugin-import": "^2.25.2",
+    "install-peers": "^1.0.4",
+    "jest": "^27.0.0",
+    "jest-mock-extended": "2.0.4",
     "jsonwebtoken": "^8.5.1",
     "mocha": "^10.0.0",
     "nyc": "^15.1.0",

@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import { title } from 'process';
 import { CustomError } from '../../../utils/CustomError';
 import { CreateUseCase } from './CreateUseCase';
 
@@ -8,10 +9,13 @@ export class CreateController {
 
   async handle(request: Request, response: Response) {
     try {
-      const {
-        body: task,
-        userLoginData: { email: userEmail },
-      } = request;
+      const { title, description, status, userLoginData: { email: userEmail, password } } = request.body;
+
+      const task = {
+        title,
+        description,
+        status
+      }
 
       const createdTask = await this.useCase.execute(task, userEmail);
 

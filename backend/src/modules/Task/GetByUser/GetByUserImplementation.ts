@@ -1,11 +1,10 @@
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '../../../db/prisma';
 import { SortOrder } from '../../../@types';
 import { ITask } from '../../../entities/ITask';
 import { GetByUserRepository } from './GetByUserRepository';
 
 export class GetByUserImplementation implements GetByUserRepository {
   async getByUser(userId: string, sortOrder: SortOrder): Promise<ITask[]> {
-    const prisma = new PrismaClient();
 
     const tasks = await prisma.task.findMany({
       where: {

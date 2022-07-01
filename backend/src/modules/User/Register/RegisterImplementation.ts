@@ -1,6 +1,6 @@
 import { IUser } from '../../../entities/IUser';
 import { RegisterRepository } from './RegisterRepository';
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '../../../db/prisma';
 import { CustomError } from '../../../utils/CustomError';
 import bcrypt from 'bcryptjs';
 import { StatusCodes } from 'http-status-codes';
@@ -10,9 +10,7 @@ export class RegisterImplementation implements RegisterRepository {
   async register(user: IUser): Promise<string> {
     const { firstName, lastName, email, password } = user;
 
-    const prisma = new PrismaClient();
-
-    var cryptedPass = bcrypt.hashSync(password);
+    const cryptedPass = bcrypt.hashSync(password);
 
     await prisma.user
       .create({
