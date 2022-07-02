@@ -4,7 +4,7 @@ import { prisma } from '../../../db/prisma';
 import { CustomError } from '../../../utils/CustomError';
 import bcrypt from 'bcryptjs';
 import { StatusCodes } from 'http-status-codes';
-import { generateToken } from '../../../utils/token/generateToken';
+import { GenerateToken } from '../../../utils/token/generateToken';
 
 export class RegisterImplementation implements RegisterRepository {
   async register(user: IUser): Promise<string> {
@@ -34,7 +34,7 @@ export class RegisterImplementation implements RegisterRepository {
         await prisma.$disconnect();
       });
 
-    const generatedToken = generateToken(user);
+    const generatedToken = await new GenerateToken().generate(user);
 
     return generatedToken;
   }

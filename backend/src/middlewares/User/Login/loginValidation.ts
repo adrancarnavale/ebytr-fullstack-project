@@ -4,18 +4,18 @@ import { ObjectSchema } from 'joi';
 import { IUser } from '../../../entities/IUser';
 import { loginSchema } from './loginSchema';
 
-export function loginValidation(
-  request: Request,
-  response: Response,
-  next: NextFunction
-) {
-  const { body: user } = request;
+export class LoginValidation {
+  constructor(private schema: ObjectSchema<IUser>) {}
 
-  const { error } = loginSchema.validate(user);
+  async validation(request: Request, response: Response, next: NextFunction) {
+    const { body: user } = request;
 
-  if (!error) return next();
+    const { error } = this.schema.validate(user);
 
-  return response
-    .status(StatusCodes.BAD_REQUEST)
-    .json({ message: error.message });
+    if (!error) return next();
+
+    return response
+      .status(StatusCodes.BAD_REQUEST)
+      .json({ message: error.message });
+  }
 }

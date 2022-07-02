@@ -2,23 +2,21 @@ import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { ObjectSchema } from 'joi';
 import { ITask } from '../../entities/ITask';
-import { taskSchema } from './taskSchema';
 
-export function taskValidation(
-  request: Request,
-  response: Response,
-  next: NextFunction
-) {
-  const { body: task } = request;
+export class TaskValidation {
+  constructor(private schema: ObjectSchema<ITask>) {}
 
-  console.log(task);
-  
+  async validation(request: Request, response: Response, next: NextFunction) {
+    const { body: task } = request;
 
-  const { error } = taskSchema.validate(task);
+    console.log(task);
 
-  if (!error) return next();
+    const { error } = this.schema.validate(task);
 
-  return response
-    .status(StatusCodes.BAD_REQUEST)
-    .json({ message: error.message });
+    if (!error) return next();
+
+    return response
+      .status(StatusCodes.BAD_REQUEST)
+      .json({ message: error.message });
+  }
 }

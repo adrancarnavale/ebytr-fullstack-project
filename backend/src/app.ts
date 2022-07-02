@@ -1,11 +1,29 @@
 import express from 'express';
 import cors from 'cors';
 import { routes } from './routes';
+import 'dotenv/config';
 
-const app = express();
+export class AppInstance {
+  public app: express.Application;
 
-app.use(express.json());
-app.use(cors());
-app.use(routes);
+  constructor() {
+    this.app = express();
+    this.middlewares();
+    this.routes();
+  }
 
-export { app };
+  middlewares() {
+    this.app.use(express.json());
+    this.app.use(cors());
+  }
+
+  routes() {
+    this.app.use(routes);
+  }
+
+  listen() {
+    this.app.listen(process.env.PORT, () => {
+      console.log(`Server running on port ${process.env.PORT}`);
+    });
+  }
+}

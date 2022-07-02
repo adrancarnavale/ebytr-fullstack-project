@@ -4,7 +4,7 @@ import { IUser } from '../../../entities/IUser';
 import { CustomError } from '../../../utils/CustomError';
 import { LoginRepository } from './LoginRepository';
 import bcrypt from 'bcryptjs';
-import { generateToken } from '../../../utils/token/generateToken';
+import { GenerateToken } from '../../../utils/token/generateToken';
 import { UserLoginResponse } from '../../../DTOs/UserLoginResponseDTO';
 
 export class LoginImplementation implements LoginRepository {
@@ -30,7 +30,7 @@ export class LoginImplementation implements LoginRepository {
         'invalid email or password'
       );
 
-    const token = generateToken(userInfos);
+    const token = await new GenerateToken().generate(userInfos);
     const id = foundUser.id;
 
     const userLoginResponse = {
