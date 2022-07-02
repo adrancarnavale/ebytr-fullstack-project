@@ -1,1 +1,0 @@
-{"version":3,"file":"DeleteUseCase.js","sourceRoot":"","sources":["../../../../src/modules/Task/Delete/DeleteUseCase.ts"],"names":[],"mappings":";;;AAEA,MAAa,aAAa;IACxB,YAAoB,cAAgC;QAAhC,mBAAc,GAAd,cAAc,CAAkB;IAAG,CAAC;IAExD,KAAK,CAAC,OAAO,CAAC,MAAc;QAC1B,MAAM,IAAI,CAAC,cAAc,CAAC,MAAM,CAAC,MAAM,CAAC,CAAC;QAEzC,OAAO;IACT,CAAC;CACF;AARD,sCAQC"}

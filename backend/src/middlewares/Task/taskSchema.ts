@@ -20,5 +20,9 @@ export const taskSchema = Joi.object({
     .messages({
       'any.only': 'You must provide a valid status',
       'any.required': 'You must provide a valid status',
-    }),
+  }),
+  userLoginData: Joi.object({
+    email: Joi.string().email(),
+    password: Joi.string(),
+  }),
 });

@@ -21,7 +21,7 @@ export class CreateController {
 
       return response
         .status(StatusCodes.CREATED)
-        .json({ message: createdTask });
+        .json(createdTask);
     } catch (error) {
       return response
         .status((error as CustomError).status)

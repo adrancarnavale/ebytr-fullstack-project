@@ -13,7 +13,7 @@ export class CreateImplementation implements CreateRepository {
       where: {
         email: userEmail,
       },
-    });
+    });    
 
     if (!user)
       throw new CustomError(
