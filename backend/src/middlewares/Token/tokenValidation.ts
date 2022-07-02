@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { verifyToken } from '../../utils/token/verifyToken';
+import { VerifyToken } from '../../utils/token/verifyToken';
 
 export class TokenValidation {
   async validation(request: Request, response: Response, next: NextFunction) {
@@ -16,7 +16,7 @@ export class TokenValidation {
 
       const {
         data: { email, password },
-      } = verifyToken(token);
+      } = await new VerifyToken().verify(token);
 
       request.body.userLoginData = {
         email,
