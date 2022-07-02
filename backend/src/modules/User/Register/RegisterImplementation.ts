@@ -25,6 +25,8 @@ export class RegisterImplementation implements RegisterRepository {
         if (message.includes('users_email_key'))
           throw new CustomError(StatusCodes.CONFLICT, 'User already exists');
 
+        console.log('here');
+
         throw new CustomError(
           StatusCodes.INTERNAL_SERVER_ERROR,
           'Internal server error, UserRegisterImplementation'

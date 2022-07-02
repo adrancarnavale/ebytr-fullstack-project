@@ -1,0 +1,20 @@
+{
+  "name": "ebytrtodolist",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "compose:up:dev": "docker-compose -f docker-compose.dev.yaml up -d --build",
+    "compose:down:dev": "docker-compose -f docker-compose.dev.yaml down --remove-orphans"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adrancarnavale/ebytr-fullstack-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adrancarnavale/ebytr-fullstack-project/issues"
+  },
+  "homepage": "https://github.com/adrancarnavale/ebytr-fullstack-project#readme"
+}
