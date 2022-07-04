@@ -1,4 +1,4 @@
-import { Container } from '../../atoms/Container';
+import { Container } from '@atoms';
 import { IContainerProps } from './types';
 
 export function PageContainer({ children }: IContainerProps) {

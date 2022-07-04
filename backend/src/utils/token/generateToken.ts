@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import 'dotenv/config';
-import { IUser } from '../../entities/IUser';
+import { IUser } from '@entities';
 
 const { JWT_SECRET } = process.env;
 

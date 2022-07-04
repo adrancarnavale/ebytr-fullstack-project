@@ -5,3 +5,4 @@ export const INVALID_PASS =
 export const INVALID_DATA = 'invalid email or password';
 export const EMPTY_PASS = 'Your password must not be empty';
 export const EMAIL_EMPTY = 'Your email must not be empty';
+export const USER_UNREGISTERED = 'unregistered user';

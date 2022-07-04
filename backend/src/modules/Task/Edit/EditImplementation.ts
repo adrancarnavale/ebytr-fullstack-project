@@ -1,7 +1,7 @@
-import { prisma } from '../../../db/prisma';
+import { prisma } from '@db/prisma';
 import { StatusCodes } from 'http-status-codes';
-import { ITask } from '../../../entities/ITask';
-import { CustomError } from '../../../utils/CustomError';
+import { ITask } from '@entities/ITask';
+import { CustomError } from '@utils/CustomError';
 import { EditRepository } from './EditRepository';
 
 export class EditImplementation implements EditRepository {

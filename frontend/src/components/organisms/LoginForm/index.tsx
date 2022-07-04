@@ -1,16 +1,19 @@
 import { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import { FormButton } from '../../molecules/FormButton';
-import { FormContainer } from '../../molecules/FormContainer';
-import { TextLink } from '../../molecules/TextLink';
-import { UserInput } from '../../molecules/UserInput';
+import {
+  FormButton,
+  FormContainer,
+  TextLink,
+  UserInput,
+  SuccessParagraph,
+  ErrorParagraph,
+} from '@molecules';
 import {
   resetErrorsFromRegister,
   resetRegistrationStatus,
-} from '../../../app/reducers/registerSlice';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { SuccessParagraph } from '../../molecules/SuccessParagraph';
-import { ErrorParagraph } from '../../molecules/ErrorParagraph';
+  useAppDispatch,
+  useAppSelector,
+} from '@app';
 import * as errors from './constants';
 
 export function LoginForm() {
@@ -51,14 +54,17 @@ export function LoginForm() {
         type="password"
         formRegister="password"
       />
-      {(message === errors.EMAIL_EMPTY || message === errors.INVALID_EMAIL) && (
+      {(message === errors.PASS_EMPTY || message === errors.INVALID_PASS) && (
         <ErrorParagraph content={message} />
       )}
       <FormButton content="Log In" />
       {isRegistered && (
         <SuccessParagraph content="You have been successfully registered" />
       )}
-      {message === errors.INVALID_DATA && <ErrorParagraph content={message} />}
+      {(message === errors.INVALID_DATA ||
+        message === errors.USER_UNREGISTERED) && (
+        <ErrorParagraph content={message} />
+      )}
       {!isRegistered && (
         <TextLink
           target="/register"

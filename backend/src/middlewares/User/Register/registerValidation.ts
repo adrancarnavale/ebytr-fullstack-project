@@ -1,7 +1,7 @@
 import { NextFunction, Request, response, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { ObjectSchema } from 'joi';
-import { IUser } from '../../../entities/IUser';
+import { IUser } from '@entities/IUser';
 import { registerSchema } from './registerSchema';
 
 export class RegisterValidation {

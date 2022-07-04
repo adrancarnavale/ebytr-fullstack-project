@@ -1,19 +1,18 @@
-import { prisma } from '../../../db/prisma';
+import { prisma } from '@db/prisma';
 import { StatusCodes } from 'http-status-codes';
-import { ITask } from '../../../entities/ITask';
-import { CustomError } from '../../../utils/CustomError';
+import { ITask } from '@entities/ITask';
+import { CustomError } from '@utils/CustomError';
 import { CreateRepository } from './CreateRepository';
 
 export class CreateImplementation implements CreateRepository {
   async create(task: ITask, userEmail: string): Promise<ITask> {
-
     const { title, description, status } = task;
 
     const user = await prisma.user.findUnique({
       where: {
         email: userEmail,
       },
-    });    
+    });
 
     if (!user)
       throw new CustomError(

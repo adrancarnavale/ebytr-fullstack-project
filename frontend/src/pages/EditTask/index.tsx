@@ -1,5 +1,4 @@
-import { EditTaskContent } from '../../components/organisms/EditTaskForm';
-import { EditTaskHeader } from '../../components/organisms/EditTaskHeader';
+import { EditTaskContent, EditTaskHeader } from '@components';
 
 export function EditTask() {
   return (

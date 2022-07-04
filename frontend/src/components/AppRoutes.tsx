@@ -1,9 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { CreateTask } from '../pages/CreateTask';
-import { EditTask } from '../pages/EditTask';
-import { Login } from '../pages/Login';
-import { Registration } from '../pages/Registration';
-import { Tasks } from '../pages/Task';
+import { CreateTask, EditTask, Login, Registration, Tasks } from '@pages';
 
 export function AppRoutes() {
   return (

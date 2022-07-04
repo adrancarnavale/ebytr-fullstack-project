@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { ObjectSchema } from 'joi';
-import { ITask } from '../../entities/ITask';
+import { ITask } from '@entities/ITask';
 
 export class TaskValidation {
   constructor(private schema: ObjectSchema<ITask>) {}

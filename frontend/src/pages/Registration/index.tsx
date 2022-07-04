@@ -1,6 +1,8 @@
-import { PageContainer } from '../../components/molecules/PageContainer';
-import { RegistrationForm } from '../../components/organisms/RegistrationForm';
-import { RegistrationHeader } from '../../components/organisms/RegistrationHeader';
+import {
+  PageContainer,
+  RegistrationForm,
+  RegistrationHeader,
+} from '@components';
 
 export function Registration() {
   return (

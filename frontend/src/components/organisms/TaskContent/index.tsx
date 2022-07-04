@@ -1,7 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
-import { Paragraph } from '../../atoms/Paragraph';
-import { ContentContainer } from '../../molecules/ContentContainer';
-import { DisclosureElement } from '../../molecules/Disclosure';
+import { Paragraph } from '@atoms';
+import { ContentContainer, DisclosureElement } from '@molecules';
 import { ITask, ITaskContentProps } from './types';
 
 export function TaskContent({ elements }: ITaskContentProps) {

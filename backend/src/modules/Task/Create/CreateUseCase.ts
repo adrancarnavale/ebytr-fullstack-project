@@ -1,4 +1,4 @@
-import { ITask } from '../../../entities/ITask';
+import { ITask } from '@entities/ITask';
 import { CreateRepository } from './CreateRepository';
 
 export class CreateUseCase {

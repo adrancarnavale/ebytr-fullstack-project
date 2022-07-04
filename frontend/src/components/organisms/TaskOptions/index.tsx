@@ -1,10 +1,9 @@
 import { RadioGroup } from '@headlessui/react';
 import { useState, useEffect } from 'react';
-import { Container } from '../../atoms/Container';
-import { ContentContainer } from '../../molecules/ContentContainer';
-import { useAppDispatch } from '../../../app/hooks';
-import { getTasksFromUser, updateOrder } from '../../../app/reducers/taskSlice';
-import { getStorage } from '../../../utils/storage/getStorage';
+import { Container } from '@atoms';
+import { ContentContainer } from '@molecules';
+import { getStorage } from '@utils';
+import { useAppDispatch, getTasksFromUser, updateOrder } from '@app';
 
 export function TaskOptions() {
   const [option, setOption] = useState('createdAt');

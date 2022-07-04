@@ -1,5 +1,5 @@
-import { UserLoginResponse } from '../../../DTOs/UserLoginResponseDTO';
-import { IUser } from '../../../entities/IUser';
+import { UserLoginResponse } from '@DTOs/UserLoginResponseDTO';
+import { IUser } from '@entities/IUser';
 import { LoginRepository } from './LoginRepository';
 
 export class LoginUseCase {

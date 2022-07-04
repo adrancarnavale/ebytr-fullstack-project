@@ -1,5 +1,5 @@
-import { Button } from '../../atoms/Button';
-import { IButtonProps } from '../../atoms/Button/types';
+import { Button } from '@atoms';
+import { IButtonProps } from './types';
 
 export function DefaultButton({ content, onClick }: IButtonProps) {
   return (

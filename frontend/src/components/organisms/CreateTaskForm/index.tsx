@@ -1,14 +1,15 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppSelector, useAppDispatch } from '../../../app/hooks';
-import { resetErrorsFromTask } from '../../../app/reducers/taskSlice';
-import { Container } from '../../atoms/Container';
-import { DefaultButton } from '../../molecules/DefaultButton';
-import { ErrorParagraph } from '../../molecules/ErrorParagraph';
-import { FormButton } from '../../molecules/FormButton';
-import { FormContainer } from '../../molecules/FormContainer';
-import { RadioGroupElement } from '../../molecules/RadioGroup';
-import { UserInput } from '../../molecules/UserInput';
+import { Container } from '@atoms';
+import {
+  DefaultButton,
+  ErrorParagraph,
+  FormButton,
+  FormContainer,
+  RadioGroupElement,
+  UserInput,
+} from '@molecules';
+import { resetErrorsFromTask, useAppSelector, useAppDispatch } from '@app';
 import * as errors from './constants';
 
 export function CreateTaskForm() {

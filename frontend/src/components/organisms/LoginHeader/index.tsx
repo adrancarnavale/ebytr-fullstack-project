@@ -1,5 +1,5 @@
-import { Container } from '../../atoms/Container';
-import { HeaderTitle } from '../../molecules/HeaderTitle';
+import { Container } from '@atoms';
+import { HeaderTitle } from '@molecules';
 
 export function LoginHeader() {
   return (

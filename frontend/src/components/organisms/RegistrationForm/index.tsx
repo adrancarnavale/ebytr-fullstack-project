@@ -1,12 +1,13 @@
 import { Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { FormButton } from '../../molecules/FormButton';
-import { FormContainer } from '../../molecules/FormContainer';
-import { UserInput } from '../../molecules/UserInput';
-import { useAppSelector, useAppDispatch } from '../../../app/hooks';
-import { ErrorParagraph } from '../../molecules/ErrorParagraph';
-import { ButtonLink } from '../../molecules/ButtonLink';
-import { resetErrorsFromRegister } from '../../../app/reducers/registerSlice';
+import {
+  FormButton,
+  FormContainer,
+  UserInput,
+  ErrorParagraph,
+  ButtonLink,
+} from '@molecules';
+import { useAppSelector, useAppDispatch, resetErrorsFromRegister } from '@app';
 import * as errors from './constants';
 
 export function RegistrationForm() {

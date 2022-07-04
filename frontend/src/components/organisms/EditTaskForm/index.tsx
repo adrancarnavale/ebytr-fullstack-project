@@ -1,17 +1,20 @@
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useAppSelector, useAppDispatch } from '../../../app/hooks';
+import { Container } from '@atoms';
+import {
+  DefaultButton,
+  ErrorParagraph,
+  FormButton,
+  FormContainer,
+  RadioGroupElement,
+  UserInput,
+} from '@molecules';
 import {
   resetErrorsFromTask,
   saveTaskBeingEditted,
-} from '../../../app/reducers/taskSlice';
-import { Container } from '../../atoms/Container';
-import { DefaultButton } from '../../molecules/DefaultButton';
-import { ErrorParagraph } from '../../molecules/ErrorParagraph';
-import { FormButton } from '../../molecules/FormButton';
-import { FormContainer } from '../../molecules/FormContainer';
-import { RadioGroupElement } from '../../molecules/RadioGroup';
-import { UserInput } from '../../molecules/UserInput';
+  useAppSelector,
+  useAppDispatch,
+} from '@app';
 
 export function EditTaskContent() {
   const navigate = useNavigate();

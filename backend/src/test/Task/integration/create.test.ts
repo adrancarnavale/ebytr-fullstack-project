@@ -1,5 +1,5 @@
-import { prisma } from '../../../db/prisma';
-import { app } from '../../../app';
+import { prisma } from '@db/prisma';
+import { app } from '@app';
 import jwt from 'jsonwebtoken';
 import request from 'supertest';
 

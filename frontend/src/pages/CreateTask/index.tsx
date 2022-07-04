@@ -1,6 +1,4 @@
-import { PageContainer } from '../../components/molecules/PageContainer';
-import { CreateTaskForm } from '../../components/organisms/CreateTaskForm';
-import { CreateTaskHeader } from '../../components/organisms/CreateTaskHeader';
+import { PageContainer, CreateTaskForm, CreateTaskHeader } from '@components';
 
 export function CreateTask() {
   return (

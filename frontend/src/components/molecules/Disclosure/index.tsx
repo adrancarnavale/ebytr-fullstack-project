@@ -2,12 +2,9 @@ import { Disclosure } from '@headlessui/react';
 import { useCallback } from 'react';
 import { ArrowsOutSimple } from 'phosphor-react';
 import { useNavigate } from 'react-router-dom';
+import { Paragraph, Container, Button } from '@atoms';
+import { destroyTask, useAppDispatch } from '@app';
 import { IDisclosureProps, TStatus } from './types';
-import { Paragraph } from '../../atoms/Paragraph';
-import { Container } from '../../atoms/Container';
-import { destroyTask } from '../../../app/reducers/taskSlice';
-import { Button } from '../../atoms/Button';
-import { useAppDispatch } from '../../../app/hooks';
 
 const done = 'text-nord-aurora-4';
 const progress = 'text-nord-aurora-3';

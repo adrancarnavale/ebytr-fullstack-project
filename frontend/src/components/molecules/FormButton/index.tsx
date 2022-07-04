@@ -1,4 +1,4 @@
-import { SubmitButton } from '../../atoms/SubmitButton';
+import { SubmitButton } from '@atoms';
 import { IButtonProps } from './types';
 
 export function FormButton({ content, onClick }: IButtonProps) {

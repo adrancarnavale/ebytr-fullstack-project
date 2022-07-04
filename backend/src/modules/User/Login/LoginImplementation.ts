@@ -1,11 +1,11 @@
-import { prisma } from '../../../db/prisma';
+import { prisma } from '@db/prisma';
 import { StatusCodes } from 'http-status-codes';
-import { IUser } from '../../../entities/IUser';
-import { CustomError } from '../../../utils/CustomError';
+import { IUser } from '@entities/IUser';
+import { CustomError } from '@utils/CustomError';
 import { LoginRepository } from './LoginRepository';
 import bcrypt from 'bcryptjs';
-import { GenerateToken } from '../../../utils/token/generateToken';
-import { UserLoginResponse } from '../../../DTOs/UserLoginResponseDTO';
+import { GenerateToken } from '@utils/token/generateToken';
+import { UserLoginResponse } from '@DTOs/UserLoginResponseDTO';
 
 export class LoginImplementation implements LoginRepository {
   async login(userInfos: IUser): Promise<UserLoginResponse> {
@@ -18,7 +18,7 @@ export class LoginImplementation implements LoginRepository {
     });
 
     if (!foundUser)
-      throw new CustomError(StatusCodes.NOT_FOUND, 'User not found');
+      throw new CustomError(StatusCodes.NOT_FOUND, 'unregistered user');
 
     const { password } = foundUser;
 

@@ -1,6 +1,5 @@
 import { BracketsCurly } from 'phosphor-react';
-import { Container } from '../../atoms/Container';
-import { Header } from '../../atoms/Header';
+import { Container, Header } from '@atoms';
 import { IHeaderTitleProps } from './types';
 
 export function HeaderTitle({ content }: IHeaderTitleProps) {

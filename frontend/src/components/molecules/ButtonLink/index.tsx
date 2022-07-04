@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
+import { DefaultButton } from '@molecules';
 import { IButtonProps } from './types';
-import { DefaultButton } from '../DefaultButton';
 
 export function ButtonLink({ target, content }: IButtonProps) {
   return (

@@ -1,5 +1,4 @@
-import { Container } from '../../atoms/Container';
-import { Header } from '../../atoms/Header';
+import { Container, Header } from '@atoms';
 
 export function LoadingElement() {
   return (

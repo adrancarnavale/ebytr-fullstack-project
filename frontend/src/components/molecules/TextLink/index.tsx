@@ -1,6 +1,4 @@
-import { Container } from '../../atoms/Container';
-import { LinkTo } from '../../atoms/LinkTo';
-import { Paragraph } from '../../atoms/Paragraph';
+import { Container, LinkTo, Paragraph } from '@atoms';
 import { ITextLinkProps } from './types';
 
 export function TextLink({ target, content }: ITextLinkProps) {

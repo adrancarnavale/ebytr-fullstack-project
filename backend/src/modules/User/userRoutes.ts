@@ -1,8 +1,6 @@
 import express from 'express';
-import { register } from './Register/RegisterIntegration';
-import { login } from './Login/LoginIntegration';
-import { registerValidation } from '../../middlewares/User/Register';
-import { loginValidation } from '../../middlewares/User/Login';
+import { register, login } from '@modules';
+import { registerValidation, loginValidation } from '@middlewares';
 
 export const userRoutes = express.Router();
 

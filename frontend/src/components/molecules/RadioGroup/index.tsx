@@ -1,6 +1,6 @@
 import { RadioGroup } from '@headlessui/react';
 import { Controller } from 'react-hook-form';
-import { Container } from '../../atoms/Container';
+import { Container } from '@atoms';
 import { IRadioGroupProps } from './types';
 
 export function RadioGroupElement({ formHook }: IRadioGroupProps) {

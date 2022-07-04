@@ -1,7 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { api } from '../../../utils/api';
-import { CustomError } from '../../../utils/CustomError/CustomError';
-import { setStorage } from '../../../utils/storage/setStorage';
+import { api, CustomError, setStorage } from '@utils';
 import {
   ErrorData,
   LoginInfos,

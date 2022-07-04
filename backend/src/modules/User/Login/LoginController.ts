@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { CustomError } from '../../../utils/CustomError';
+import { CustomError } from '@utils/CustomError';
 import { LoginUseCase } from './LoginUseCase';
 
 export class LoginController {
   constructor(private useCase: LoginUseCase) {}
 
   async handle(request: Request, response: Response) {
-    try {      
+    try {
       const { body: userInfos } = request;
 
       const userLoginResponse = await this.useCase.execute(userInfos);

@@ -1,4 +1,4 @@
-import { HeaderTitle } from '../../molecules/HeaderTitle';
+import { HeaderTitle } from '@molecules';
 
 export function CreateTaskHeader() {
   return <HeaderTitle content="Create Task" />;

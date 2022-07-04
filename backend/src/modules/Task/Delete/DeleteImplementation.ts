@@ -1,5 +1,5 @@
-import { prisma } from '../../../db/prisma';
-import { CustomError } from '../../../utils/CustomError';
+import { prisma } from '@db/prisma';
+import { CustomError } from '@utils/CustomError';
 import { DeleteRepository } from './DeleteRepository';
 
 export class DeleteImplementation implements DeleteRepository {

@@ -1,7 +1,5 @@
-import { Label } from '../../atoms/Label';
-import { Input } from '../../atoms/Input';
+import { Label, Input, Container } from '@atoms';
 import { IInputProps } from './types';
-import { Container } from '../../atoms/Container';
 
 export function UserInput({
   inputId,

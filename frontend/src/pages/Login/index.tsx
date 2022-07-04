@@ -1,7 +1,4 @@
-import { LoginHeader } from '../../components/organisms/LoginHeader';
-import { LoginForm } from '../../components/organisms/LoginForm';
-import { Container } from '../../components/atoms/Container';
-import { PageContainer } from '../../components/molecules/PageContainer';
+import { LoginHeader, LoginForm, PageContainer } from '@components';
 
 export function Login() {
   return (

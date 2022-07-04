@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { CustomError } from '../../../utils/CustomError';
+import { CustomError } from '@utils/CustomError';
 import { RegisterUsecase } from './RegisterUsecase';
 
 export class RegisterController {

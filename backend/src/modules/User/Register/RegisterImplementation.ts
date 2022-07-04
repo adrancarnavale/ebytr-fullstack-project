@@ -1,10 +1,10 @@
-import { IUser } from '../../../entities/IUser';
+import { IUser } from '@entities/IUser';
 import { RegisterRepository } from './RegisterRepository';
-import { prisma } from '../../../db/prisma';
-import { CustomError } from '../../../utils/CustomError';
+import { prisma } from '@db/prisma';
+import { CustomError } from '@utils/CustomError';
 import bcrypt from 'bcryptjs';
 import { StatusCodes } from 'http-status-codes';
-import { GenerateToken } from '../../../utils/token/generateToken';
+import { GenerateToken } from '@utils/token/generateToken';
 
 export class RegisterImplementation implements RegisterRepository {
   async register(user: IUser): Promise<string> {
