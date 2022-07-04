@@ -1,7 +1,7 @@
 import { NextFunction, Request, response, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { ObjectSchema } from 'joi';
-import { IUser } from '@entities/IUser';
+import { IUser } from '@entities';
 
 export class LoginValidation {
   constructor(private schema: ObjectSchema<IUser>) {}

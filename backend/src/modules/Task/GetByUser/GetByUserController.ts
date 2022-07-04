@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { SortOrder } from '@types';
-import { CustomError } from '@utils/CustomError';
+import { CustomError } from '@utils';
 import { GetByUserUseCase } from './GetByUserUseCase';
 
 export class GetByUserController {

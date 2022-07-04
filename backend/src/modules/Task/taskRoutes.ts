@@ -1,6 +1,5 @@
 import express, { NextFunction, Request, Response } from 'express';
-import { taskValidation } from '@middlewares/Task';
-import { tokenValidation } from '@middlewares/Token';
+import { tokenValidation, taskValidation } from '@middlewares';
 import { create } from './Create/CreateIntegration';
 import { getByUser } from './GetByUser/GetByUserIntegration';
 import { edit } from './Edit/EditIntegration';

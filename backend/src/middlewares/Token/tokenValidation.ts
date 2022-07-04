@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { VerifyToken } from '@utils/token/verifyToken';
+import { VerifyToken } from '@utils';
 
 export class TokenValidation {
   async validation(request: Request, response: Response, next: NextFunction) {

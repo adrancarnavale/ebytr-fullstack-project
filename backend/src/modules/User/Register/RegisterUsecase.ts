@@ -1,4 +1,4 @@
-import { IUser } from '@entities/IUser';
+import { IUser } from '@entities';
 import { RegisterRepository } from './RegisterRepository';
 
 export class RegisterUsecase {

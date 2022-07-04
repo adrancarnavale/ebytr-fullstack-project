@@ -18,7 +18,7 @@
     "paths": {
       "@types": ["./src/types"],
       "@utils": ["./src/utils"],
-      "@db": ["./src/db"],
+      "@db": ["./src/db/prisma"],
       "@entities": ["./src/entities"],
       "@DTOs": ["./src/DTOs"],
       "@middlewares": ["./src/middlewares"],

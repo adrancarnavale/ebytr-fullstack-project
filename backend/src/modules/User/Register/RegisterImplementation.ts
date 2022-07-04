@@ -1,10 +1,9 @@
-import { IUser } from '@entities/IUser';
+import { IUser } from '@entities';
 import { RegisterRepository } from './RegisterRepository';
-import { prisma } from '@db/prisma';
-import { CustomError } from '@utils/CustomError';
+import { prisma } from '@db';
+import { CustomError, GenerateToken } from '@utils';
 import bcrypt from 'bcryptjs';
 import { StatusCodes } from 'http-status-codes';
-import { GenerateToken } from '@utils/token/generateToken';
 
 export class RegisterImplementation implements RegisterRepository {
   async register(user: IUser): Promise<string> {
@@ -24,8 +23,6 @@ export class RegisterImplementation implements RegisterRepository {
       .catch(({ message }) => {
         if (message.includes('users_email_key'))
           throw new CustomError(StatusCodes.CONFLICT, 'User already exists');
-
-        console.log('here');
 
         throw new CustomError(
           StatusCodes.INTERNAL_SERVER_ERROR,

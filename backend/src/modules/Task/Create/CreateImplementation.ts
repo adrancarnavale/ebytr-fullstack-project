@@ -1,7 +1,7 @@
-import { prisma } from '@db/prisma';
+import { prisma } from '@db';
 import { StatusCodes } from 'http-status-codes';
-import { ITask } from '@entities/ITask';
-import { CustomError } from '@utils/CustomError';
+import { ITask } from '@entities';
+import { CustomError } from '@utils';
 import { CreateRepository } from './CreateRepository';
 
 export class CreateImplementation implements CreateRepository {

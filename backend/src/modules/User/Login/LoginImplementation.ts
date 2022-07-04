@@ -1,11 +1,10 @@
-import { prisma } from '@db/prisma';
+import { prisma } from '@db';
 import { StatusCodes } from 'http-status-codes';
-import { IUser } from '@entities/IUser';
-import { CustomError } from '@utils/CustomError';
+import { IUser } from '@entities';
+import { CustomError, GenerateToken } from '@utils';
 import { LoginRepository } from './LoginRepository';
 import bcrypt from 'bcryptjs';
-import { GenerateToken } from '@utils/token/generateToken';
-import { UserLoginResponse } from '@DTOs/UserLoginResponseDTO';
+import { UserLoginResponse } from '@DTOs';
 
 export class LoginImplementation implements LoginRepository {
   async login(userInfos: IUser): Promise<UserLoginResponse> {

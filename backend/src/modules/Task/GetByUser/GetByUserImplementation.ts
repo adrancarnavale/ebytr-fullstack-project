@@ -1,6 +1,6 @@
-import { prisma } from '@db/prisma';
+import { prisma } from '@db';
 import { SortOrder } from '@types';
-import { ITask } from '@entities/ITask';
+import { ITask } from '@entities';
 import { GetByUserRepository } from './GetByUserRepository';
 
 export class GetByUserImplementation implements GetByUserRepository {

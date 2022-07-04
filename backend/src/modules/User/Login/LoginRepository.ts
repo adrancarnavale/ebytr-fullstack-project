@@ -1,5 +1,5 @@
-import { UserLoginResponse } from '@DTOs/UserLoginResponseDTO';
-import { IUser } from '@entities/IUser';
+import { UserLoginResponse } from '@DTOs';
+import { IUser } from '@entities';
 
 export interface LoginRepository {
   login(userInfos: IUser): Promise<UserLoginResponse>;

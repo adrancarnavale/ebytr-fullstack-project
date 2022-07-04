@@ -1,5 +1,5 @@
 import { SortOrder } from '@types';
-import { ITask } from '@entities/ITask';
+import { ITask } from '@entities';
 import { GetByUserRepository } from './GetByUserRepository';
 
 export class GetByUserUseCase {
