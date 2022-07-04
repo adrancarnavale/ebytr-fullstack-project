@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">26.19% </span>
+                <span class="strong">92.85% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/42</span>
+                <span class='fraction'>39/42</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">33.33% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>1/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">26.19% </span>
+                <span class="strong">92.85% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/42</span>
+                <span class='fraction'>39/42</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -115,37 +115,37 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { prisma } from '@db';
 import { StatusCodes } from 'http-status-codes';
@@ -156,38 +156,38 @@ import bcrypt from 'bcryptjs';
 import { UserLoginResponse } from '@DTOs';
 &nbsp;
 export class LoginImplementation implements LoginRepository {
-<span class="fstat-no" title="function not covered" >  async login(userInfos: IUser): Promise&lt;UserLoginResponse&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    const { email, password: passRequest } = userInfos;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    const foundUser = await prisma.user.findUnique({</span>
-<span class="cstat-no" title="statement not covered" >      where: {</span>
-<span class="cstat-no" title="statement not covered" >        email,</span>
-<span class="cstat-no" title="statement not covered" >      },</span>
-<span class="cstat-no" title="statement not covered" >    });</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    if (!foundUser)</span>
-<span class="cstat-no" title="statement not covered" >      throw new CustomError(StatusCodes.NOT_FOUND, 'unregistered user');</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    const { password } = foundUser;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    const isValid = bcrypt.compareSync(passRequest, password);</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    if (!isValid)</span>
-<span class="cstat-no" title="statement not covered" >      throw new CustomError(</span>
+  async login(userInfos: IUser): Promise&lt;UserLoginResponse&gt; {
+    const { email, password: passRequest } = userInfos;
+&nbsp;
+    const foundUser = await prisma.user.findUnique({
+      where: {
+        email,
+      },
+    });
+&nbsp;
+    if (!foundUser)
+<span class="branch-0 cbranch-no" title="branch not covered" >      throw new CustomError(StatusCodes.NOT_FOUND, 'unregistered user');</span>
+&nbsp;
+    const { password } = foundUser;
+&nbsp;
+    const isValid = bcrypt.compareSync(passRequest, password);
+&nbsp;
+    if (!isValid)
+<span class="branch-0 cbranch-no" title="branch not covered" >      throw new CustomError(</span>
 <span class="cstat-no" title="statement not covered" >        StatusCodes.BAD_REQUEST,</span>
 <span class="cstat-no" title="statement not covered" >        'invalid email or password'</span>
 <span class="cstat-no" title="statement not covered" >      );</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    const token = await new GenerateToken().generate(userInfos);</span>
-<span class="cstat-no" title="statement not covered" >    const id = foundUser.id;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    const userLoginResponse = {</span>
-<span class="cstat-no" title="statement not covered" >      token,</span>
-<span class="cstat-no" title="statement not covered" >      id,</span>
-<span class="cstat-no" title="statement not covered" >    };</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    return userLoginResponse;</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+&nbsp;
+    const token = await new GenerateToken().generate(userInfos);
+    const id = foundUser.id;
+&nbsp;
+    const userLoginResponse = {
+      token,
+      id,
+    };
+&nbsp;
+    return userLoginResponse;
+  }
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -196,7 +196,7 @@ export class LoginImplementation implements LoginRepository {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Jul 04 2022 16:16:38 GMT-0300 (Brasilia Standard Time)
+                at Mon Jul 04 2022 19:18:03 GMT-0300 (Brasilia Standard Time)
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

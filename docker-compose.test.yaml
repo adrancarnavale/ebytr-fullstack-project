@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    container_name: ebytr-db-test
+    ports:
+      - 3456:3306
+    volumes:
+      - ebytr_integration_tests_db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+volumes:
+  ebytr_integration_tests_db:

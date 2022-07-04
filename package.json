@@ -4,7 +4,13 @@
   "description": "",
   "scripts": {
     "compose:up:dev": "docker-compose -f docker-compose.dev.yaml up -d --build",
-    "compose:down:dev": "docker-compose -f docker-compose.dev.yaml down --remove-orphans"
+    "compose:down:dev": "docker-compose -f docker-compose.dev.yaml down --remove-orphans",
+    "compose:up:test": "docker-compose -f docker-compose.test.yaml up -d --build",
+    "compose:down:test": "docker-compose -f docker-compose.test.yaml down --remove-orphans",
+    "test:be": "yarn compose:up:test && cd backend && dotenv -e .env.test yarn prisma migrate reset && yarn test && cd .. && yarn compose:down:test",
+    "install:fe": "cd frontend && yarn",
+    "install:be": "cd backend && yarn",
+    "install:apps": "yarn install:fe && yarn install:be"
   },
   "repository": {
     "type": "git",
@@ -16,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/adrancarnavale/ebytr-fullstack-project/issues"
   },
-  "homepage": "https://github.com/adrancarnavale/ebytr-fullstack-project#readme"
+  "homepage": "https://github.com/adrancarnavale/ebytr-fullstack-project#readme",
+  "dependencies": {
+    "dotenv-cli": "^6.0.0"
+  }
 }
