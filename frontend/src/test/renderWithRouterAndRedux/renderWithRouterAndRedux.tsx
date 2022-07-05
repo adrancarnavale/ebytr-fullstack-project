@@ -7,10 +7,10 @@ import { configureStore } from '@reduxjs/toolkit';
 import { unstable_HistoryRouter as Router } from 'react-router-dom';
 
 interface renderWithRouterAndReduxProps {
-  initialState: object;
-  store: Store;
-  route: string;
-  history: MemoryHistory;
+  initialState?: object;
+  store?: Store;
+  route?: string;
+  history?: MemoryHistory;
 }
 
 export const renderWithRouterAndRedux = (
@@ -20,7 +20,6 @@ export const renderWithRouterAndRedux = (
     store = configureStore({
       reducer: rootReducer,
       preloadedState: initialState,
-      devTools: true,
     }),
     route = '/',
     history = createMemoryHistory({ initialEntries: [route] }),

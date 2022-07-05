@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import EnvironmentPlugin from 'vite-plugin-environment';
 import 'dotenv/config';
 
 // stackoverflow.com/questions/70709987/how-to-load-environment-variables-from-env-file-using-vite
@@ -12,6 +13,6 @@ export default ({ mode }) => {
       port: Number(process.env.VITE_SERVER_PORT),
       host: true,
     },
-    plugins: [react(), tsconfigPaths()],
+    plugins: [react(), tsconfigPaths(), EnvironmentPlugin('all')],
   });
 };

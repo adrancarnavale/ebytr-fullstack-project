@@ -55,7 +55,7 @@ export function EditTaskContent() {
       {message.includes('status') && <ErrorParagraph content={message} />}
 
       <Container className="flex flex-row justify-center items-center w-full">
-        <FormButton content="Submit" />
+        <FormButton onClick={() => navigate('/tasks')} content="Submit" />
         <DefaultButton content="Back" onClick={() => navigate('/tasks')} />
       </Container>
     </FormContainer>

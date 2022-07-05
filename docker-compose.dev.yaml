@@ -30,7 +30,7 @@ services:
     environment:
       - PORT=3331
       - JWT_SECRET=12345678aA
-      - DATABASE_URL=mysql://root:1234@db:3306/TaskManagerDev
+      - DATABASE_URL=mysql://root:1234@db:3306/TaskManager
   db:
     container_name: ebytr-db
     image: mysql:5.7
