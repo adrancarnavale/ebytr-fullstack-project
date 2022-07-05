@@ -8,20 +8,16 @@ describe('E2E tests for create tasks route', () => {
     await request(app).post('/user/register').send({
       firstName: 'Adran',
       lastName: 'Carnavale',
-      email: 'adran.carnavale@gmail.com',
+      email: 'adran.carnavale.task.create@gmail.com',
       password: '12345678aA',
     });
-  });
-
-  afterAll(async () => {
-    await prisma.user.delete({ where: { email: 'adran.carnavale@gmail.com' } });
   });
 
   describe('It should pass when', () => {
     beforeEach(() => {
       jest.spyOn(jwt, 'verify').mockResolvedValue({
         data: {
-          email: 'adran.carnavale@gmail.com',
+          email: 'adran.carnavale.task.create@gmail.com',
           password: '12345678aA',
         },
       } as unknown as never);
@@ -97,7 +93,7 @@ describe('E2E tests for create tasks route', () => {
     beforeEach(() => {
       jest.spyOn(jwt, 'verify').mockResolvedValue({
         data: {
-          email: 'adran.carnavale@gmail.com',
+          email: 'adran.carnavale.task.create@gmail.com',
           password: '12345678aA',
         },
       } as unknown as never);

@@ -1,25 +1,48 @@
+import { prisma } from '@db';
 import { app } from '@app';
 import jwt from 'jsonwebtoken';
 import request from 'supertest';
 
-describe('Integration tests for create tasks route', () => {
-  beforeAll(async () => {
-    await request(app).post('/user/register').send({
-      firstName: 'Adran',
-      lastName: 'Carnavale',
-      email: 'adran.carnavale.task.create@gmail.com',
-      password: '12345678aA',
-    });
-  });
+const taskInput = {
+  title: 'teste de task',
+  description: 'estudar',
+  status: 'done',
+};
 
+const createdTaskMock = {
+  authorId: '1',
+  createdAt: '2020-01-01T00:00:00.000Z' as unknown as Date,
+  id: '45e2ffd2-4afd-46f7-8fe1-6db993bf97b0',
+  title: 'teste de task',
+  description: 'estudar',
+  status: 'done',
+};
+
+const createdUserMock = {
+  id: '98c5d87b-ee08-4a6d-9178-155e58992f28',
+  firstName: 'Adran',
+  lastName: 'Carnavale',
+  email: 'adran.carnnavale@gmail.com',
+  password: '$2a$10$V31Dn8wZaSOr/bE0TwMPAead6X3DFH1W95SiewBuQILWbzpJemgMu',
+};
+
+const tokenMock = '1234';
+
+const tokenReturnMock = {
+  data: {
+    email: 'teste@teste.com',
+    password: '1234',
+  },
+};
+
+describe('Integration tests for create tasks route', () => {
   describe('It should pass when', () => {
     beforeEach(() => {
-      jest.spyOn(jwt, 'verify').mockResolvedValue({
-        data: {
-          email: 'adran.carnavale.task.create@gmail.com',
-          password: '12345678aA',
-        },
-      } as unknown as never);
+      jest.spyOn(prisma.user, 'findUnique').mockResolvedValue(createdUserMock);
+      jest.spyOn(prisma.task, 'create').mockResolvedValue(createdTaskMock);
+      jest
+        .spyOn(jwt, 'verify')
+        .mockReturnValue(tokenReturnMock as unknown as void);
     });
 
     afterEach(() => {
@@ -29,18 +52,12 @@ describe('Integration tests for create tasks route', () => {
     it('correct data is provided', async () => {
       const res = await request(app)
         .post('/task/create')
-        .set('authorization', 'token')
-        .send({
-          title: 'teste de task',
-          description: 'estudar',
-          status: 'done',
-        });
-
-      const { id } = res.body;
+        .set('authorization', tokenMock)
+        .send(taskInput);
 
       expect(res.status).toBe(201);
       expect(res.body).toStrictEqual({
-        id,
+        id: '45e2ffd2-4afd-46f7-8fe1-6db993bf97b0',
         title: 'teste de task',
         description: 'estudar',
         status: 'done',
@@ -50,17 +67,15 @@ describe('Integration tests for create tasks route', () => {
     it('no description is provided', async () => {
       const res = await request(app)
         .post('/task/create')
-        .set('authorization', 'token')
+        .set('authorization', tokenMock)
         .send({
           title: 'teste',
           status: 'done',
         });
 
-      const { id } = res.body;
-
       expect(res.status).toBe(201);
       expect(res.body).toStrictEqual({
-        id,
+        id: '45e2ffd2-4afd-46f7-8fe1-6db993bf97b0',
         title: 'teste',
         status: 'done',
       });
@@ -69,18 +84,16 @@ describe('Integration tests for create tasks route', () => {
     it('empty description is provided', async () => {
       const res = await request(app)
         .post('/task/create')
-        .set('authorization', 'token')
+        .set('authorization', tokenMock)
         .send({
           title: 'teste',
           description: '',
           status: 'done',
         });
 
-      const { id } = res.body;
-
       expect(res.status).toBe(201);
       expect(res.body).toStrictEqual({
-        id,
+        id: '45e2ffd2-4afd-46f7-8fe1-6db993bf97b0',
         title: 'teste',
         description: '',
         status: 'done',
@@ -90,12 +103,11 @@ describe('Integration tests for create tasks route', () => {
 
   describe('It should fail when', () => {
     beforeEach(() => {
-      jest.spyOn(jwt, 'verify').mockResolvedValue({
-        data: {
-          email: 'adran.carnavale.task.create@gmail.com',
-          password: '12345678aA',
-        },
-      } as unknown as never);
+      jest.spyOn(prisma.user, 'findUnique').mockResolvedValue(createdUserMock);
+      jest.spyOn(prisma.task, 'create').mockResolvedValue(createdTaskMock);
+      jest
+        .spyOn(jwt, 'verify')
+        .mockReturnValue(tokenReturnMock as unknown as void);
     });
 
     afterEach(() => {
@@ -105,7 +117,7 @@ describe('Integration tests for create tasks route', () => {
     it('no title is provided', async () => {
       const res = await request(app)
         .post('/task/create')
-        .set('authorization', 'token')
+        .set('authorization', tokenMock)
         .send({
           description: 'estudar',
           status: 'done',
@@ -120,7 +132,7 @@ describe('Integration tests for create tasks route', () => {
     it('empty title is provided', async () => {
       const res = await request(app)
         .post('/task/create')
-        .set('authorization', 'token')
+        .set('authorization', tokenMock)
         .send({
           title: '',
           description: 'estudar',
@@ -136,7 +148,7 @@ describe('Integration tests for create tasks route', () => {
     it('a title with one character is provided', async () => {
       const res = await request(app)
         .post('/task/create')
-        .set('authorization', 'token')
+        .set('authorization', tokenMock)
         .send({
           title: 'a',
           description: 'estudar',
@@ -152,7 +164,7 @@ describe('Integration tests for create tasks route', () => {
     it('a title with two characters is provided', async () => {
       const res = await request(app)
         .post('/task/create')
-        .set('authorization', 'token')
+        .set('authorization', tokenMock)
         .send({
           title: 'ab',
           description: 'estudar',
@@ -168,7 +180,7 @@ describe('Integration tests for create tasks route', () => {
     it('a invalid status is provided', async () => {
       const res = await request(app)
         .post('/task/create')
-        .set('authorization', 'token')
+        .set('authorization', tokenMock)
         .send({
           title: 'teste',
           description: 'estudar',
@@ -184,7 +196,7 @@ describe('Integration tests for create tasks route', () => {
     it('no status is provided', async () => {
       const res = await request(app)
         .post('/task/create')
-        .set('authorization', 'token')
+        .set('authorization', tokenMock)
         .send({
           title: 'teste',
           description: 'estudar',
@@ -199,7 +211,7 @@ describe('Integration tests for create tasks route', () => {
     it('empty status is provided', async () => {
       const res = await request(app)
         .post('/task/create')
-        .set('authorization', 'token')
+        .set('authorization', tokenMock)
         .send({
           title: 'teste',
           description: 'estudar',

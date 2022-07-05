@@ -4,15 +4,11 @@ import request from 'supertest';
 import { prisma } from '@db';
 
 describe('E2E tests for destroy tasks route', () => {
-  afterAll(async () => {
-    await prisma.user.delete({ where: { email: 'adran.carnavale@gmail.com' } });
-  });
-
   describe('It should pass when', () => {
     beforeEach(() => {
       jest.spyOn(jwt, 'verify').mockResolvedValue({
         data: {
-          email: 'adran.carnavale@gmail.com',
+          email: 'adran.carnavale.task.delete@gmail.com',
           password: '12345678aA',
         },
       } as unknown as never);
@@ -26,7 +22,7 @@ describe('E2E tests for destroy tasks route', () => {
       const user = await request(app).post('/user/register').send({
         firstName: 'Adran',
         lastName: 'Carnavale',
-        email: 'adran.carnavale@gmail.com',
+        email: 'adran.carnavale.task.delete@gmail.com',
         password: '12345678aA',
       });
 
@@ -57,7 +53,7 @@ describe('E2E tests for destroy tasks route', () => {
     beforeEach(() => {
       jest.spyOn(jwt, 'verify').mockResolvedValue({
         data: {
-          email: 'adran.carnavale@gmail.com',
+          email: 'adran.carnavale.task.delete@gmail.com',
           password: '12345678aA',
         },
       } as unknown as never);
@@ -69,7 +65,7 @@ describe('E2E tests for destroy tasks route', () => {
 
     it('Should pass when correct taskId is provided', async () => {
       const user = await request(app).post('/user/login').send({
-        email: 'adran.carnavale@gmail.com',
+        email: 'adran.carnavale.task.delete@gmail.com',
         password: '12345678aA',
       });
 
