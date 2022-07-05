@@ -22,7 +22,8 @@
       "@utils": ["./src/utils"],
       "@app": ["./src/app"],
       "@components": ["./src/components"],
-      "@pages": ["./src/pages"]
+      "@pages": ["./src/pages"],
+      "@test": ["./src/test"]
     }
   },
   "include": ["src"],
