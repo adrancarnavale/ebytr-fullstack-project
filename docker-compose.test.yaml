@@ -1,12 +1,41 @@
 version: "3.9"
 
 services:
-  db:
+  frontend_test:
+    container_name: ebytr-fe-test
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    depends_on:
+      - backend_test
+      - db_test
+    ports:
+      - 6330:6330
+    volumes:
+      - ./frontend:/app
+    environment:
+      - VITE_BASE_URL_PORT=6331
+      - VITE_SERVER_PORT=6330
+  backend_test:
+    container_name: ebytr-be-test
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    depends_on:
+      - db_test
+    ports:
+      - 6331:6331
+    volumes:
+      - ./backend:/app
+    environment:
+      - PORT=6331
+      - JWT_SECRET=12345678aA
+      - DATABASE_URL=mysql://root:1234@db_test:3306/TaskManagerTest
+  db_test:
     image: mysql:5.7
-    restart: always
     container_name: ebytr-db-test
     ports:
-      - 3456:3306
+      - 6306:3306
     volumes:
       - ebytr_integration_tests_db:/var/lib/mysql
     environment:

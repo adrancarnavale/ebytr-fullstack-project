@@ -9,9 +9,11 @@
   },
   "scripts": {
     "db:up": "yarn prisma migrate dev && yarn dev",
+    "db:migrate": "yarn prisma migrate dev reset",
     "db:restore": "yarn prisma migrate reset && yarn dev",
+    "test": "docker exec -it  ebytr-be-test /bin/sh -c 'yarn test:docker'",
     "dev": "tsnd -r tsconfig-paths/register --respawn --transpile-only --exit-child --watch src src/server.ts",
-    "test": "dotenv -e .env.test jest"
+    "test:docker": "dotenv -e .env.test -- yarn prisma migrate reset --force && jest && dotenv -e .env.test -- yarn prisma migrate reset --force"
   },
   "keywords": [],
   "author": "",
