@@ -37,8 +37,8 @@ services:
     ports:
       - 6306:3306
     volumes:
-      - ebytr_integration_tests_db:/var/lib/mysql
+      - ebytr_e2e_tests_db:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=1234
 volumes:
-  ebytr_integration_tests_db:
+  ebytr_e2e_tests_db:

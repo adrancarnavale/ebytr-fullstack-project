@@ -1,0 +1,1 @@
+echo '{"credStore": "desktop.exe"}' > $HOME/.docker/config.json

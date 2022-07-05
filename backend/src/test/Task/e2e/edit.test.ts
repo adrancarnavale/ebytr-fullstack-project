@@ -1,13 +1,18 @@
-import { app } from '@app';
 import jwt from 'jsonwebtoken';
+import { app } from '@app';
 import request from 'supertest';
+import { prisma } from '@db';
 
-describe('Integration tests for destroy tasks route', () => {
+describe('E2E tests for edit tasks route', () => {
+  afterAll(async () => {
+    await prisma.user.delete({ where: { email: 'adran.carnavale@gmail.com' } });
+  });
+
   describe('It should pass when', () => {
     beforeEach(() => {
       jest.spyOn(jwt, 'verify').mockResolvedValue({
         data: {
-          email: 'adran.carnavale.task.delete@gmail.com',
+          email: 'adran.carnavale@gmail.com',
           password: '12345678aA',
         },
       } as unknown as never);
@@ -17,15 +22,13 @@ describe('Integration tests for destroy tasks route', () => {
       jest.restoreAllMocks();
     });
 
-    it('Should pass when correct taskId is provided', async () => {
+    it('Correct inputs are provided', async () => {
       const user = await request(app).post('/user/register').send({
         firstName: 'Adran',
         lastName: 'Carnavale',
-        email: 'adran.carnavale.task.delete@gmail.com',
+        email: 'adran.carnavale@gmail.com',
         password: '12345678aA',
       });
-
-      console.log(user.body);
 
       const { token } = user.body;
 
@@ -41,10 +44,23 @@ describe('Integration tests for destroy tasks route', () => {
       const { id } = task.body;
 
       const res = await request(app)
-        .delete(`/task/destroy/${id}`)
-        .set('authorization', 'token');
+        .patch('/task/edit')
+        .set('authorization', token)
+        .send({
+          id,
+          title: 'ler aaaaaaaaaaaaaaaaaaaaa',
+          description: 'ler ler ler',
+          status: 'pending',
+        });
 
-      expect(res.status).toBe(204);
+      expect(res.status).toBe(201);
+
+      expect(res.body).toStrictEqual({
+        id,
+        title: 'ler aaaaaaaaaaaaaaaaaaaaa',
+        description: 'ler ler ler',
+        status: 'pending',
+      });
     });
   });
 
@@ -52,7 +68,7 @@ describe('Integration tests for destroy tasks route', () => {
     beforeEach(() => {
       jest.spyOn(jwt, 'verify').mockResolvedValue({
         data: {
-          email: 'adran.carnavale.task.delete@gmail.com',
+          email: 'adran.carnavale@gmail.com',
           password: '12345678aA',
         },
       } as unknown as never);
@@ -62,19 +78,26 @@ describe('Integration tests for destroy tasks route', () => {
       jest.restoreAllMocks();
     });
 
-    it('Should pass when correct taskId is provided', async () => {
+    it('No task is found', async () => {
       const user = await request(app).post('/user/login').send({
-        email: 'adran.carnavale.task.delete@gmail.com',
+        email: 'adran.carnavale@gmail.com',
         password: '12345678aA',
       });
 
       const { token } = user.body;
 
       const res = await request(app)
-        .delete('/task/destroy/anyId')
-        .set('authorization', token);
+        .patch('/task/edit')
+        .set('authorization', token)
+        .send({
+          id: 'anyId',
+          title: 'ler aaaaaaaaaaaaaaaaaaaaa',
+          description: 'ler ler ler',
+          status: 'pending',
+        });
 
       expect(res.status).toBe(404);
+
       expect(res.body).toStrictEqual({ message: 'Task not found' });
     });
   });
