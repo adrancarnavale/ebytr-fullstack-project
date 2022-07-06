@@ -1,24 +1,17 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { SortOrder } from '@types';
-import { CustomError } from '@utils';
 import { GetByUserUseCase } from './GetByUserUseCase';
 
 export class GetByUserController {
   constructor(private useCase: GetByUserUseCase) {}
 
   async handle(request: Request, response: Response) {
-    try {
-      const { id: userId } = request.params;
+    const { id: userId } = request.params;
 
-      const { order } = request.query;
-      const tasks = await this.useCase.execute(userId, order as SortOrder);
+    const { order } = request.query;
+    const tasks = await this.useCase.execute(userId, order as SortOrder);
 
-      return response.status(StatusCodes.OK).json(tasks);
-    } catch (error) {
-      return response
-        .status((error as CustomError).status)
-        .json((error as CustomError).message);
-    }
+    return response.status(StatusCodes.OK).json(tasks);
   }
 }
