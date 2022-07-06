@@ -8,9 +8,7 @@
     "compose:up:test": "docker-compose -f docker-compose.test.yaml up -d --build",
     "compose:down:test": "docker-compose -f docker-compose.test.yaml down --remove-orphans",
     "docker:repair": "/bin/sh ./backend/dockerRepair.sh && yarn compose:up:test",
-    "install:fe": "cd frontend && yarn",
-    "install:be": "cd backend && yarn",
-    "install:apps": "yarn install:fe && yarn install:be"
+    "launch:app": "docker exec -it  ebytr-fe-dev /bin/sh -c 'yarn dev'"
   },
   "repository": {
     "type": "git",

@@ -97,22 +97,52 @@ cd ebytr-fullstack-project
 ```
 
 - You will have access to various scripts, that will help you achieving what you want to do.
+
   - To enter in the development environment, run:
     ```bash
     yarn compose:up:dev
+    ```
+    or
+    ```bash
+    npm run compose:up:dev
     ```
   - To exit from the development environment, run:
     ```bash
     yarn compose:down:dev
     ```
+    or
+    ```bash
+    npm run compose:down:dev
+    ```
   - To enter in the test environment, run:
     ```bash
     yarn compose:up:test
     ```
+    or
+    ```bash
+    npm run compose:up:test
+    ```
   - To exit from the test environment, run:
+
     ```bash
     yarn compose:down:test
     ```
+
+    or
+
+    ```bash
+    npm run compose:down:test
+    ```
+
+  - To launch the application, run:
+    ```bash
+    yarn launch:app
+    ```
+    or
+    ```bash
+    npm run launch:app
+    ```
+
 - If having any problems to compose your containers, please, refer to the [Troubleshooting](#troubleshooting)
 
 ## Testing
@@ -131,6 +161,12 @@ cd frontend
 yarn test
 ```
 
+or
+
+```bash
+npm run test
+```
+
 ### Back-end
 
 - **Please certificate that you are in the test environment. If not, please change it first following the corresponding commands found in the section [Usage](#usage)**
@@ -145,6 +181,12 @@ cd backend
 yarn test
 ```
 
+or
+
+```bash
+npm run test
+```
+
 ## Troubleshooting
 
 - Error:
@@ -154,10 +196,18 @@ yarn test
   error Command failed with exit code 17.
   ```
 - Solution:
+
   - Run the command:
+
   ```bash
   yarn docker:repair
   ```
+
+  or
+
+```bash
+npm run docker:repair
+```
 
 ## Author
 
