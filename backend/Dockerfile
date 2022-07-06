@@ -12,4 +12,4 @@ RUN npx prisma generate
 
 EXPOSE 3330
 
-CMD ["npm", "run", "db:up:dev"]
+CMD ["npm", "run", "dev"]

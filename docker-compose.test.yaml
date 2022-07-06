@@ -13,6 +13,7 @@ services:
       - 6330:6330
     volumes:
       - ./frontend:/app
+        - frontend_test_node_modules:/app/node_modules
     environment:
       - VITE_BASE_URL_PORT=6331
       - VITE_SERVER_PORT=6330
@@ -27,6 +28,7 @@ services:
       - 6331:6331
     volumes:
       - ./backend:/app
+        - backend_test_node_modules:/app/node_modules
     environment:
       - PORT=6331
       - JWT_SECRET=12345678aA
@@ -42,3 +44,5 @@ services:
       - MYSQL_ROOT_PASSWORD=1234
 volumes:
   ebytr_e2e_tests_db:
+    frontend_test_node_modules:
+    backend_test_node_modules:

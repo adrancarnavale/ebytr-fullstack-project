@@ -5,8 +5,6 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview",
-    "test:jest": "jest",
     "test": "docker exec -it  ebytr-be-test /bin/sh -c 'npm run docker:test:db:up' && docker exec -it  ebytr-fe-test /bin/sh -c 'npm run test:jest' && docker exec -it  ebytr-be-test /bin/sh -c 'npm run docker:test:db:down'"
   },
   "dependencies": {
