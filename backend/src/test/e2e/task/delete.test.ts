@@ -26,8 +26,6 @@ describe('E2E tests for destroy tasks route', () => {
         password: '12345678aA',
       });
 
-      console.log(user.body);
-
       const { token } = user.body;
 
       const task = await request(app)
