@@ -34,13 +34,13 @@ Ebytr To-Do list is a project that creates a task list, where a user can create 
 
 <div align="center">
   <img width="200px" height="432px" src="./assets/home.png" />
-  <img src="./assets/create.png" />
-  <img src="./assets/edit.png" />
+  <img width="200px" height="432px" src="./assets/create.png" />
+  <img width="200px" height="432px" src="./assets/edit.png" />
 </div>
 
 <div align="center">
-  <img src="./assets/register.png" />
-  <img src="./assets/tasks.png" />
+  <img width="200px" height="432px" src="./assets/register.png" />
+  <img width="200px" height="432px" src="./assets/tasks.png" />
 </div>
 
 ## The development process
