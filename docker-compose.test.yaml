@@ -44,5 +44,5 @@ services:
       - MYSQL_ROOT_PASSWORD=1234
 volumes:
   ebytr_e2e_tests_db:
-    frontend_test_node_modules:
-    backend_test_node_modules:
+  frontend_test_node_modules:
+  backend_test_node_modules:

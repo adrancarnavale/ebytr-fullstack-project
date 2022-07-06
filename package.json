@@ -8,8 +8,7 @@
     "compose:up:test": "docker-compose -f docker-compose.test.yaml up -d --build",
     "compose:down:test": "docker-compose -f docker-compose.test.yaml down --remove-orphans",
     "docker:repair": "/bin/sh ./backend/dockerRepair.sh && npm run compose:up:test",
-    "launch:app:dev": "docker exec -it  ebytr-fe-dev /bin/sh -c 'npm run dev'",
-    "launch:app:test": "docker exec -it  ebytr-fe-dev /bin/sh -c 'npm run dev'"
+    "launch:app": "/bin/sh launchApp.sh"
   },
   "repository": {
     "type": "git",
