@@ -100,45 +100,23 @@ cd ebytr-fullstack-project
 
   - To enter in the development environment, run:
     ```bash
-    yarn compose:up:dev
-    ```
-    or
-    ```bash
     npm run compose:up:dev
     ```
   - To exit from the development environment, run:
     ```bash
-    yarn compose:down:dev
-    ```
-    or
-    ```bash
     npm run compose:down:dev
     ```
   - To enter in the test environment, run:
-    ```bash
-    yarn compose:up:test
-    ```
-    or
     ```bash
     npm run compose:up:test
     ```
   - To exit from the test environment, run:
 
     ```bash
-    yarn compose:down:test
-    ```
-
-    or
-
-    ```bash
     npm run compose:down:test
     ```
 
   - To launch the application, run:
-    ```bash
-    yarn launch:app
-    ```
-    or
     ```bash
     npm run launch:app
     ```
@@ -158,12 +136,6 @@ cd frontend
 ```
 
 ```bash
-yarn test
-```
-
-or
-
-```bash
 npm run test
 ```
 
@@ -176,12 +148,6 @@ npm run test
 ```bash
 cd backend
 ```
-
-```bash
-yarn test
-```
-
-or
 
 ```bash
 npm run test
@@ -198,12 +164,6 @@ npm run test
 - Solution:
 
   - Run the command:
-
-  ```bash
-  yarn docker:repair
-  ```
-
-  or
 
 ```bash
 npm run docker:repair

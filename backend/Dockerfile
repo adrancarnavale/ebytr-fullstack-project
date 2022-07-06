@@ -2,17 +2,9 @@ FROM node:16-alpine
 
 WORKDIR /app
 
-COPY ./src/db /app/db
-
 COPY package.json .
 
-RUN npm install yarn
-
-RUN rm -rf package-lock.json
-
-RUN yarn add prisma
-
-RUN yarn
+RUN npm install
 
 COPY . .
 
@@ -20,4 +12,4 @@ RUN npx prisma generate
 
 EXPOSE 3330
 
-CMD ["yarn", "db:up:dev"]
+CMD ["npm", "run", "db:up:dev"]
