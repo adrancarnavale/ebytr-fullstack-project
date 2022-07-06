@@ -10,7 +10,7 @@ RUN npm install yarn
 
 RUN rm -rf package-lock.json
 
-RUN yarn prisma
+RUN yarn add prisma
 
 RUN yarn
 
