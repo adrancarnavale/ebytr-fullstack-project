@@ -33,7 +33,7 @@ Ebytr To-Do list is a project that creates a task list, where a user can create 
 ## Images
 
 <div align="center">
-  <img width="100px" height="216px" src="./assets/home.png" />
+  <img width="200px" height="432px" src="./assets/home.png" />
   <img src="./assets/create.png" />
   <img src="./assets/edit.png" />
 </div>
