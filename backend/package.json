@@ -8,14 +8,14 @@
     "schema": "src/db/prisma/schema.prisma"
   },
   "scripts": {
-    "db:up": "yarn prisma migrate dev && yarn dev",
-    "db:migrate": "yarn prisma migrate dev reset",
-    "db:restore": "yarn prisma migrate reset --force && yarn dev",
+    "db:up": "npx prisma migrate dev && yarn dev",
+    "db:migrate": "npx prisma migrate dev reset",
+    "db:restore": "npx prisma migrate reset --force && yarn dev",
     "test": "docker exec -it  ebytr-be-test /bin/sh -c 'yarn docker:test'",
     "dev": "tsnd -r tsconfig-paths/register --respawn --transpile-only --exit-child --watch src src/server.ts",
-    "docker:test": "dotenv -e .env.test -- yarn prisma migrate reset --force && jest && dotenv -e .env.test -- yarn prisma migrate reset --force",
-    "docker:test:db:up": "dotenv -e .env.test -- yarn prisma migrate reset --force",
-    "docker:test:db:down": "dotenv -e .env.test -- yarn prisma migrate reset --force",
+    "docker:test": "dotenv -e .env.test -- npx prisma migrate reset --force && jest && dotenv -e .env.test -- npx prisma migrate reset --force",
+    "docker:test:db:up": "dotenv -e .env.test -- npx prisma migrate reset --force",
+    "docker:test:db:down": "dotenv -e .env.test -- npx prisma migrate reset --force",
     "prisma": "^4.0.0"
   },
   "keywords": [],
