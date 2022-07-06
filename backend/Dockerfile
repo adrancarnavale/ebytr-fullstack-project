@@ -2,11 +2,15 @@ FROM node:16-alpine
 
 WORKDIR /app
 
+COPY ./src/db /app/db
+
 COPY package.json .
 
 RUN npm install yarn
 
 RUN rm -rf package-lock.json
+
+RUN yarn prisma
 
 RUN yarn
 

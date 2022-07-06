@@ -9,7 +9,7 @@
   },
   "scripts": {
     "db:up": "npx prisma migrate dev && yarn dev",
-    "db:up:dev": "npx prisma db push dev && yarn dev",
+    "db:up:dev": "npx prisma db push && yarn dev",
     "db:migrate": "npx prisma migrate dev reset",
     "db:restore": "npx prisma migrate reset --force && yarn dev",
     "test": "docker exec -it  ebytr-be-test /bin/sh -c 'yarn docker:test'",
