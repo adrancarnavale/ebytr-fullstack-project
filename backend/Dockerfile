@@ -16,4 +16,4 @@ RUN npx prisma generate
 
 EXPOSE 3330
 
-CMD ["yarn", "db:up"]
+CMD ["yarn", "db:up:dev"]
